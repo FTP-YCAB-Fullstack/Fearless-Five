@@ -1,16 +1,16 @@
 import React, {useState} from 'react';
-// import axios from 'axios'
+import axios from 'axios'
 
 const Login = () => {
   const [email,setEmail] = useState("")
   const [password,setPassword] = useState("")
 
-//   const postLogin = async data => {
-//     let response = await axios.post('http://localhost:3001/login', data);
-//     response = response.data;
-//     localStorage.setItem('token', response.token)
-//     console.log(localStorage.getItem('token'))
-//   }
+  const postLogin = async data => {
+    let response = await axios.post('http://localhost:3001/login', data);
+    response = response.data;
+    localStorage.setItem('token', response.token)
+    console.log(localStorage.getItem('token'))
+  }
 
   const submitHandler = (e) =>{
     e.preventDefault();
@@ -22,7 +22,7 @@ const Login = () => {
     setEmail("")
     setPassword("")
     console.log(email_password)
-
+    postLogin(email_password)
   }
 
   return (
@@ -34,7 +34,7 @@ const Login = () => {
       <form onSubmit={submitHandler}>
         <input placeholder="email" value={email} onChange={(e)=>setEmail(e.target.value)} type="text"/>
         <input placeholder="password" value={password} onChange={(e)=>setPassword(e.target.value)} type="text"/>
-        <button>sumbit</button>
+        <button>Submit</button>
       </form>
      </div>
     </div>

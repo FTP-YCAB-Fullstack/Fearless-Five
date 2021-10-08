@@ -1,6 +1,7 @@
 import React from "react";
 import Home from "../components/Home";
-const Home = () => {
+
+const PageHome = () => {
   return (
     <div>
       <span>
@@ -9,4 +10,4 @@ const Home = () => {
     </div>
   );
 };
-export default Home;
+export default PageHome;

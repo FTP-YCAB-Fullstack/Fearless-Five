@@ -20,43 +20,67 @@ const userSchema = new mongoose.Schema({
   },
   phoneNumber: {
       type: String,
-      default: ""
+      default: "No Phone Number"
   },
   location: {
       type: String,
-      default: ""
+      default: "No Location"
   },
   jobTitle: {
       type: String,
-      default: ""
+      default: "No Job Title"
   },
   jobStatus: {
       type: String,
-      default: ""
+      default: "No Job Status"
   },
   citizen: {
       type: String,
-      default: ""
+      default: "No Citizen"
   },
   nationality: {
       type: String,
-      default: ""
+      default: "No Nationality"
   },
   summary: {
       type: String,
-      default: ""
+      default: "No Summary"
   },
   profile: {
       type: String,
       default: ""
   },
   skills: {
-      type: Array,
+      type: [String],
       default: []
   },
   experience: {
-      type: Array,
+      type: [
+          {
+              workPlace: {
+                  type: String,
+                  required: true
+              },
+              division: {
+                  type: String,
+                  required: true
+              },
+              startYear: {
+                  type: Number,
+                  required: true
+              },
+              endYear: {
+                  type: Number,
+                  required: true
+              },
+          }
+      ],
       default: []
+  },
+  role: {
+      type: String,
+      required: true,
+      default: 'user'
   }
 })
 
