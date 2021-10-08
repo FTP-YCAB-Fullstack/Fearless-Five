@@ -2,7 +2,9 @@ import React from "react";
 import Login from "../components/Login";
 
 const PageLogin = () => {
-  return <Login />;
+  return (
+    <Login />
+  );
 };
 
 export default PageLogin
