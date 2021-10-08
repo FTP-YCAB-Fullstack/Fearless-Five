@@ -29,6 +29,13 @@ class Users {
             console.log(error)
         }
     }
+    // static getProfile = async (req, res, next) => {
+    //    try {
+    //     const {token}
+    //    } catch(err) {
+    //        console.log(err)
+    //    }
+    // }
 }
 
 module.exports = Users
