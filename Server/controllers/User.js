@@ -18,7 +18,7 @@ class Users {
                         message: 'Error! Either email or Password Wrong'
                     })  
                 } else {
-                    const token = jwt.sign({name:exist.name, email: exist.email}, 'secret-key');
+                    const token = jwt.sign({name:exist.name, email: exist.email, role: exist.role, id: exist._id}, 'secret-key');
                     res.status(200).json({
                         token
                     })
@@ -29,13 +29,14 @@ class Users {
             console.log(error)
         }
     }
-    // static getProfile = async (req, res, next) => {
-    //    try {
-    //     const {token}
-    //    } catch(err) {
-    //        console.log(err)
-    //    }
-    // }
+    static getProfile = async (req, res, next) => {
+       try {
+            const own = await User.findOne({email: req.user.email}).select('-password -__v');
+            res.status(200).json(own)
+       } catch(err) {
+           console.log(err)
+       }
+    }
 }
 
 module.exports = Users
