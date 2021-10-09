@@ -22,12 +22,7 @@ const Profile = (props) => {
   useEffect(() => {
     const token = localStorage.getItem("token");
     getProfile(token);
-    console.log(user);
   }, []);
-
-  useEffect(() => {
-    console.log(user);
-  }, [user]);
 
   return (
     <React.Fragment>
