@@ -10,7 +10,6 @@ const Login = () => {
     let response = await axios.post('http://localhost:3001/login', data);
     response = response.data;
     localStorage.setItem('token', response.token)
-    console.log(localStorage.getItem('token'))
   }
 
   const submitHandler = (e) =>{
