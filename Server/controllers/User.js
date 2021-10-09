@@ -39,7 +39,7 @@ class Users {
     }
     static Register = async (req, res, next) => {
         try {
-             let { name, email, password } = req.body;
+             let { name, email, password,role } = req.body;
              if (!email.includes("@")) {
                  return next({code:400,message: "Invalid email"})
                  
@@ -55,6 +55,7 @@ class Users {
                     name,
                     email,
                     password,
+                    role
                 };
                 const regisUser = await User.create(newUser);
                 res.status(201).json({
