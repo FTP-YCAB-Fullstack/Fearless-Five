@@ -1,6 +1,8 @@
 import React, { useState } from "react";
 import axios from "axios";
 import { Link } from "react-router-dom";
+import swal from 'sweetalert2'
+
 
 const Regis = () => {
   const [name, setName] = useState("");
@@ -9,9 +11,21 @@ const Regis = () => {
   const [role, setRole] = useState("");
 
   const postRegis = async (data) => {
-    let response = await axios.post("http://localhost:3001/register", data);
-    response = response.data;
-    console.log(response);
+    try {
+      let response = await axios.post("http://localhost:3001/register", data);
+      response = response;
+      swal.fire({
+        icon: 'success',
+        title: 'Sign Up Success!',
+        text: 'Your account is successfully registered',
+      })
+    } catch (err) {
+      swal.fire({
+        icon: 'error',
+        title: 'Oops...',
+        text: 'This email is already registered',
+      })
+    }
   };
 
   const handleSumbit = (e) => {
@@ -20,15 +34,13 @@ const Regis = () => {
       name,
       email,
       password,
-      role,
+      role: role,
     };
 
-    // console.log(Register);
     postRegis(Register);
     setName("");
     setEmail("");
     setPassword("");
-    setRole("");
   };
 
   return (
@@ -43,18 +55,21 @@ const Regis = () => {
             placeholder="name"
             value={name}
             onChange={(e) => setName(e.target.value)}
+            required
           />
           <input
             type="text"
             placeholder="email"
             value={email}
             onChange={(e) => setEmail(e.target.value)}
+            required
           />
           <input
             type="password"
             placeholder="password"
             value={password}
             onChange={(e) => setPassword(e.target.value)}
+            required
           />
           <div>
             <input
@@ -63,6 +78,7 @@ const Regis = () => {
               type="radio"
               onChange={(e) => setRole(e.target.value)}
               value="user"
+              required
             />
             <label htmlFor="user">Job Hunter</label>
             <input
@@ -74,7 +90,7 @@ const Regis = () => {
             />
             <label htmlFor="hrd">Job Poster</label>
           </div>
-          <button>Sumbit</button>
+          <button>Submit</button>
           <p>
             Sudah mempunyai akun? <Link to="/login"> Login </Link>{" "}
           </p>

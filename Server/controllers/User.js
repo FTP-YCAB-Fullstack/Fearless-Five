@@ -26,7 +26,7 @@ class Users {
             }
         } catch (error) {
             // next(error)
-            console.log(error)
+            next({code: 500, message: err.message})
         }
     }
     static getProfile = async (req, res, next) => {
@@ -34,7 +34,7 @@ class Users {
             const own = await User.findOne({email: req.user.email}).select('-password -__v');
             res.status(200).json(own)
        } catch(err) {
-           console.log(err)
+            next({code: 500, message: err.message})
        }
     }
     static Register = async (req, res, next) => {
@@ -50,7 +50,7 @@ class Users {
              if(exist){
                  next({code:409, message: "This email is already registered"})
              } else {
-                password = bcrypt.hashSync(password,8)
+                password = bcrypt.hashSync(password,8);
                 const newUser = {
                     name,
                     email,
@@ -64,8 +64,7 @@ class Users {
              }
            
         } catch (error) {
-        //   next(error);
-          console.log(error)
+          next({code: 500, message: error.message});
         }
     };
 }
