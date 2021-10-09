@@ -3,6 +3,7 @@ const app = express();
 const mongoose = require('mongoose')
 const cors = require('cors');
 const router = require('./routers/index')
+const errorHandler = require('./middlewares/handleError')
 
 app.use(cors());
 app.use(express.json())
@@ -17,5 +18,6 @@ mongoose
 .catch(err => console.log(err))
 
 app.use(router)
+app.use(errorHandler)
 
 app.listen(3001, () => console.log("server running"));
