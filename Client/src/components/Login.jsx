@@ -1,5 +1,6 @@
 import React, {useState} from 'react';
 import axios from 'axios'
+import { Link } from 'react-router-dom';
 
 const Login = () => {
   const [email,setEmail] = useState("")
@@ -35,6 +36,7 @@ const Login = () => {
         <input placeholder="email" value={email} onChange={(e)=>setEmail(e.target.value)} type="text"/>
         <input placeholder="password" value={password} onChange={(e)=>setPassword(e.target.value)} type="text"/>
         <button>Submit</button>
+        <p>belum mempunyai akun? <Link to="/register" > Login </Link> </p>
       </form>
      </div>
     </div>
