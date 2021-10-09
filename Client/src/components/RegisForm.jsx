@@ -1,5 +1,6 @@
 import React,{useState} from "react"
 import axios from 'axios'
+import { Link } from 'react-router-dom'
 
 const Regis = () =>{
     const [name,setName] = useState("")
@@ -10,8 +11,6 @@ const Regis = () =>{
     const postRegis = async data => {
         let response = await axios.post('http://localhost:3001/register', data);
         response = response.data;
-        localStorage.setItem('token', response.token)
-        console.log(localStorage.getItem('token'))
       }
 
     const handleSumbit = (e) =>{
@@ -25,6 +24,7 @@ const Regis = () =>{
         setName("")
         setEmail("")
         setPassword("")
+        postRegis(Register)
     }
 
     return (
@@ -36,7 +36,9 @@ const Regis = () =>{
                 <form onSubmit={handleSumbit}>
                   <input type="text"  placeholder="name" value={name} onChange={(e)=>setName(e.target.value)} />
                   <input type="text"  placeholder="email" value={email} onChange={(e)=>setEmail(e.target.value)} />
-                  <input type="password"  placeholder="password" value={password} onChange={(e)=>setEmail(e.target.value)} />
+                  <input type="password"  placeholder="password" value={password} onChange={(e)=>setPassword(e.target.value)} />
+                  <button>Sumbit</button>
+                  <p>Sudah mempunyai akun? <Link to="/login" > Login </Link> </p>
                 </form>
             </div>
         </div>
