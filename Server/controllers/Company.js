@@ -14,8 +14,8 @@ class Perusahaan {
   static getById = async (req, res, next) => {
     try {
       const { _id } = req.params;
-      const company = await Company.findOne({ _id });
-      console.log(company);
+      const company = await Company.findById(_id);
+      if (!company) return next({code: 404, message: 'Not Found'})
       res.status(200).json({
         company,
       });
@@ -40,10 +40,10 @@ class Perusahaan {
   static deleteId = async (req, res, next) => {
     try {
       const { _id } = req.params;
-      console.log(_id);
-      const company = await Company.remove({ _id });
+      await Company.findByIdAndRemove(_id);
 
-      res.status(204).json(company);
+      res.sendStatus(204)
+
     } catch (error) {
       next({ code: 500, message: err.message });
     }
