@@ -8,7 +8,7 @@ class Perusahaan {
         company,
       });
     } catch (error) {
-      next(error);
+      next({code: 500, message: error.message});
     }
   };
   static getById = async (req, res, next) => {
@@ -20,7 +20,7 @@ class Perusahaan {
         company,
       });
     } catch (error) {
-      next({ code: 500, message: err.message });
+      next({ code: 500, message: error.message });
     }
   };
   static post = async (req, res, next) => {
@@ -30,7 +30,6 @@ class Perusahaan {
         name,
       };
       const perusahaan = await Company.create(newPerusahaan);
-      console.log(perusahaan);
       res.status(201).json(perusahaan);
     } catch (error) {
       next({ code: 500, message: err.message });
@@ -45,7 +44,7 @@ class Perusahaan {
       res.sendStatus(204)
 
     } catch (error) {
-      next({ code: 500, message: err.message });
+      next({ code: 500, message: error.message });
     }
   };
 }
