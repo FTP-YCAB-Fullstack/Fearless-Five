@@ -36,7 +36,7 @@ class VacancyController {
             benefit = benefit.split(',')
             requirements = requirements.split(',')
             responsibility = responsibility.split(',')
-            goodToHave ? goodToHave = responsibility.split(',') : null
+            goodToHave ? goodToHave = goodToHave.split(',') : null
             
             const data = await Vacancy.create({
                 companyId, 
