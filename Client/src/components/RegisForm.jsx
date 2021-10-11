@@ -13,14 +13,14 @@ const Regis = () => {
 
   const postRegis = async (data) => {
     try {
-      let response = await axios.post("http://localhost:3001/register", data);
+      let response = await axios.post("http://localhost:3001/users/register", data);
       response = response;
       swal.fire({
         icon: "success",
         title: "Sign Up Success!",
         text: "Your account is successfully registered",
       });
-      let login = await axios.post('http://localhost:3001/login', {email, password});
+      let login = await axios.post('http://localhost:3001/users/login', {email, password});
       login = login.data.token;
       localStorage.setItem('token', login)
       let profile = await axios.get('http://localhost:3001/users', {
