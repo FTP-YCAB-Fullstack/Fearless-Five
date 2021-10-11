@@ -40,6 +40,10 @@ const vacancySchema = new mongoose.Schema({
     goodToHave: {
         type: [String],
         default: []
+    },
+    workNow: {
+        type: String,
+        default: ""
     }
 });
 
