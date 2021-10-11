@@ -1,5 +1,7 @@
-import React from "react";
+import React, {useEffect} from "react";
 import { Route, Switch } from "react-router-dom";
+import {useDispatch} from 'react-redux';
+import axios from 'axios'
 
 import NavG from "./components/Navbar";
 
@@ -12,6 +14,18 @@ import PageRegis from "./page/PageRegis";
 import PageForm from "./page/PageForm";
 
 function App() {
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    const token = localStorage.getItem('token');
+    if (token) {
+      axios.get('http://localhost:3001/users', {
+        headers: {
+          token
+        }
+      }).then(res => dispatch({type: 'ADD_LOGIN', payload: res.data})).catch(err => console.log(err))
+    }
+  }, [])
   return (
     <div>
       <NavG />
