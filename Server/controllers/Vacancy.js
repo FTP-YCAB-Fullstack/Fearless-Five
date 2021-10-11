@@ -3,7 +3,8 @@ const Vacancy = require("./../models/vacancyModel");
 class VacancyController {
     static getAll = async (req, res, next) => {
         try {
-            const data = await Vacancy.find();
+            const data = await Vacancy.find().populate('companyId');
+            
             res.status(200).json(data)
         } catch(err) {
             next({code: 500, message: err.message})

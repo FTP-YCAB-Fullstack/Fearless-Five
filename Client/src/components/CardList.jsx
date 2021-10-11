@@ -11,7 +11,7 @@ const CardList = (props) => {
       <div>
         <div className="bg-gray-600 w-80 h-80">
           <div className="bg-red-600 h-20 flex justify-center">
-            <span>{props.companyId}</span>
+            <span>{props.companyId.name}</span>
           </div>
           <span>Remote</span>
           <br />
