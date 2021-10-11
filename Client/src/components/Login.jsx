@@ -11,7 +11,7 @@ const Login = () => {
 
   const postLogin = async data => {
     try {
-      let response = await axios.post('http://localhost:3001/login', data);
+      let response = await axios.post('http://localhost:3001/users/login', data);
       response = response.data;
       localStorage.setItem('token', response.token)
       
