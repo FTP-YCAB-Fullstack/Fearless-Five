@@ -58,7 +58,7 @@ const Login = () => {
      <div>
       <form onSubmit={submitHandler}>
         <input placeholder="email" value={email} onChange={(e)=>setEmail(e.target.value)} type="text"/>
-        <input placeholder="password" value={password} onChange={(e)=>setPassword(e.target.value)} type="text"/>
+        <input placeholder="password" value={password} onChange={(e)=>setPassword(e.target.value)} type="password"/>
         <button>Submit</button>
         <p>belum mempunyai akun? <Link to="/register" > Register </Link> </p>
       </form>
