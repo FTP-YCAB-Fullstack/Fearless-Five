@@ -3,10 +3,6 @@ import styled from 'styled-components';
 import {Link} from 'react-router-dom';
 import {useSelector, useDispatch} from 'react-redux'
 
-const NavG = styled.nav`
-    display: flex;
-    justify-content: space-around
-`
 
 const LogOut = styled.p`
     cursor: pointer
@@ -23,14 +19,14 @@ const Navbar = props => {
     }
 
     return (
-        <NavG>
+        <nav className="flex flex-row justify-around">
             <Link to="/">Home</Link>
             {status === 'hrd' ? <Link to="/postjob">Post Job</Link> : null}
             <Link to="/listjob">List Job</Link>
             {!auth ? <Link to="/register">Register</Link> : null}
             {!auth ? <Link to="/login">Login</Link> : <Link to="/profile">Profile</Link>}
             {auth ? <LogOut onClick={clickEvent}>Logout</LogOut> : null}
-        </NavG>
+        </nav>
     )
 }
 

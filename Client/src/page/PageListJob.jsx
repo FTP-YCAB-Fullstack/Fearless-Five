@@ -16,10 +16,14 @@ const PageListJob = () => {
   }, []);
 
   return (
-    <div className="flex justify-center gap-x-6">
-      {jobs.map((el, index) => (
-        <CardList {...el} key={index} />
-      ))}
+    <div>
+      <div className="flex flex-wrap justify-around w-screen h-96 px-36 mt-10 overflow-y-scroll ">
+        <div className="pb-6">
+          {jobs.map((el, index) => (
+            <CardList {...el} key={index} />
+          ))}
+        </div>
+      </div>
     </div>
   );
 };

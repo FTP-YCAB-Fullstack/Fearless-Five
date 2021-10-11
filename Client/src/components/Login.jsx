@@ -51,19 +51,50 @@ const Login = () => {
   }
 
   return (
-    <div>
-      <h1>
-        Login
-      </h1>
-     <div>
-      <form onSubmit={submitHandler}>
-        <input placeholder="email" value={email} onChange={(e)=>setEmail(e.target.value)} type="text"/>
-        <input placeholder="password" value={password} onChange={(e)=>setPassword(e.target.value)} type="password"/>
-        <button>Submit</button>
-        <p>belum mempunyai akun? <Link to="/register" > Register </Link> </p>
-      </form>
-     </div>
+    <div className="h-screen w-screen flex justify-center items-center">
+    <div className="w-96">
+      <div>
+        <span className="text-4xl flex justify-center h-32">logo</span>
+      </div>
+      <div>
+        <h1 className="text-lg font-bold h-20">Login</h1>
+      </div>
+      <div>
+        <form
+          className="flex flex-col h-80 justify-between"
+          onSubmit={submitHandler}
+        >
+          <span className="h-0">email</span>
+          <input
+            className="outline-none border-2 border-gray-400 h-8 rounded-md "
+            type="text"
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
+            required
+          />
+          <span className="h-0">password</span>
+          <input
+            className="outline-none border-2 border-gray-400 h-8 rounded-md "
+            type="password"
+            value={password}
+            onChange={(e) => setPassword(e.target.value)}
+            required
+          />
+          <button className="bg-blue-500 text-white h-10 rounded-md">
+            Create account
+          </button>
+          <div>
+            <p className="italic text-center">
+              belum mempunyai akun? 
+               <Link to="/register" className="font-bold">
+                 Register
+               </Link>
+            </p>
+          </div>
+        </form>
+      </div>
     </div>
+  </div>
   );
 }
 
