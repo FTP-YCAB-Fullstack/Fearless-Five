@@ -11,7 +11,7 @@ const Login = () => {
 
   const postLogin = async data => {
     try {
-      let response = await axios.post('http://localhost:3001/login', data);
+      let response = await axios.post('http://localhost:3001/users/login', data);
       response = response.data;
       localStorage.setItem('token', response.token)
       
@@ -58,7 +58,7 @@ const Login = () => {
      <div>
       <form onSubmit={submitHandler}>
         <input placeholder="email" value={email} onChange={(e)=>setEmail(e.target.value)} type="text"/>
-        <input placeholder="password" value={password} onChange={(e)=>setPassword(e.target.value)} type="text"/>
+        <input placeholder="password" value={password} onChange={(e)=>setPassword(e.target.value)} type="password"/>
         <button>Submit</button>
         <p>belum mempunyai akun? <Link to="/register" > Register </Link> </p>
       </form>
