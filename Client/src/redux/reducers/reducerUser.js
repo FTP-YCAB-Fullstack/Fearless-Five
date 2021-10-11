@@ -11,6 +11,11 @@ const reducerUser = (state = initialState, action) => {
         isAuthenticated: true,
         user: data
        };
+    case 'LOGOUT':
+      return {
+        isAuthenticated: false,
+        user: {}
+      }
     default:
       return state;
   }
