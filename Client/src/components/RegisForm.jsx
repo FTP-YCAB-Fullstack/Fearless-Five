@@ -2,8 +2,10 @@ import React, { useState } from "react";
 import axios from "axios";
 import { Link } from "react-router-dom";
 import swal from "sweetalert2";
+import {useDispatch} from 'react-redux'
 
 const Regis = () => {
+  const dispatch = useDispatch()
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -18,7 +20,18 @@ const Regis = () => {
         title: "Sign Up Success!",
         text: "Your account is successfully registered",
       });
+      let login = await axios.post('http://localhost:3001/login', {email, password});
+      login = login.data.token;
+      localStorage.setItem('token', login)
+      let profile = await axios.get('http://localhost:3001/users', {
+        headers: {
+          token: login
+        }
+      });
+      profile = profile.data;
+      dispatch({type: 'ADD_LOGIN', payload: profile})
     } catch (err) {
+      console.log(err)
       swal.fire({
         icon: "error",
         title: "Oops...",
