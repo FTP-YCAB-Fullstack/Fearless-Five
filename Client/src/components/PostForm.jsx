@@ -1,42 +1,58 @@
+import axios from "axios";
 import React, { useState } from "react";
 
 const PostForm = () => {
-  const [company, setCompany] = useState("");
+  const [companyId, setCompanyId] = useState("");
   const [role, setRole] = useState("");
-  const [jobDecsriptions, setJobDecsriptions] = useState("");
-  const [requitmen, setRequitmen] = useState("");
-  const [hrd, setHrd] = useState("");
+  const [job_description, setJob_description] = useState("");
+  const [requirements, setRequirements] = useState("");
+  const [hrdId, setHrdId] = useState("");
   const [rangeSalary, setRangeSalary] = useState("");
   const [responsibility, setResponesibilty] = useState("");
   const [benefit, setBenefit] = useState("");
   const [mandatorySkills, setMandatorySkills] = useState("");
-  const [goodToHaveSkills, setGoodToHaveSkills] = useState("");
+  const [goodToHave, setGoodToHave] = useState("");
+
+  const Post = async (data) => {
+    try {
+      // console.log(data);
+      const token = localStorage.getItem("token");
+      let response = await axios.post("http://localhost:3001/vacancies", data, {
+        headers: {
+          token,
+        },
+      });
+      console.log(response.data);
+    } catch (error) {
+      console.log(error);
+    }
+  };
 
   const handleSumbit = (e) => {
     e.preventDefault();
     let PostJob = {
-      company,
+      companyId,
       role: role,
-      jobDecsriptions,
-      requitmen,
-      hrd,
+      job_description,
+      requirements,
+      hrdId,
       rangeSalary: rangeSalary * 1,
       responsibility,
       benefit,
       mandatorySkills,
-      goodToHaveSkills,
+      goodToHave,
     };
-    setCompany("");
+    setCompanyId("");
     setRole("");
-    setJobDecsriptions("");
-    setRequitmen("");
-    setHrd("");
+    setJob_description("");
+    setRequirements("");
+    setHrdId("");
     setRangeSalary("");
     setResponesibilty("");
     setBenefit("");
     setMandatorySkills("");
-    setGoodToHaveSkills("");
-    console.log(PostJob);
+    setGoodToHave("");
+    Post(PostJob);
   };
 
   return (
@@ -53,8 +69,8 @@ const PostForm = () => {
             >
               <input
                 placeholder="company"
-                value={company}
-                onChange={(e) => setCompany(e.target.value)}
+                value={companyId}
+                onChange={(e) => setCompanyId(e.target.value)}
                 type="text"
               />
               <input
@@ -65,20 +81,20 @@ const PostForm = () => {
               />
               <textarea
                 placeholder="job decsriptions"
-                value={jobDecsriptions}
-                onChange={(e) => setJobDecsriptions(e.target.value)}
+                value={job_description}
+                onChange={(e) => setJob_description(e.target.value)}
                 type="text"
               ></textarea>
               <input
                 placeholder="requitmen"
-                value={requitmen}
-                onChange={(e) => setRequitmen(e.target.value)}
+                value={requirements}
+                onChange={(e) => setRequirements(e.target.value)}
                 type="text"
               />
               <input
                 placeholder="hrd"
-                value={hrd}
-                onChange={(e) => setHrd(e.target.value)}
+                value={hrdId}
+                onChange={(e) => setHrdId(e.target.value)}
                 type="text"
               />
               <input
@@ -107,8 +123,8 @@ const PostForm = () => {
               />
               <input
                 placeholder="goodToHaveSkills"
-                value={goodToHaveSkills}
-                onChange={(e) => setGoodToHaveSkills(e.target.value)}
+                value={goodToHave}
+                onChange={(e) => setGoodToHave(e.target.value)}
                 type="text"
               />
               <button>Create</button>
