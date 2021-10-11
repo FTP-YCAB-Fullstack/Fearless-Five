@@ -1,5 +1,5 @@
 import React from "react";
-import CardList from "../components/cardList";
+import CardList from "../components/CardList";
 
 const PageListJob = () =>{
     return(
