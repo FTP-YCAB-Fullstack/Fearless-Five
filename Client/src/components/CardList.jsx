@@ -1,14 +1,14 @@
 import React from "react";
-import {useHistory} from 'react-router-dom'
+import { useHistory } from "react-router-dom";
 
 const CardList = (props) => {
   const history = useHistory();
 
-  console.log(props)
+  console.log(props);
 
   const onClickHandler = () => {
-    history.push(`/jobs/${props._id}`, {...props})
-  }
+    history.push(`/jobs/${props._id}`, { ...props });
+  };
 
   return (
     <div className="border-4">

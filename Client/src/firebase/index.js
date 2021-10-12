@@ -1,4 +1,4 @@
-import firebase from 'firebase/compat/app'
+import firebase from "firebase/compat/app"
 import 'firebase/compat/storage'
 
 const firebaseConfig = {

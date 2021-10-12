@@ -18,7 +18,6 @@ const PostForm = () => {
 
   const Post = async (data) => {
     try {
-      // console.log(data);
       const token = localStorage.getItem("token");
       let response = await axios.post("http://localhost:3001/vacancies", data, {
         headers: {
@@ -45,11 +44,9 @@ const PostForm = () => {
       mandatorySkills,
       goodToHave,
     };
-    // setCompanyId("");
     setRole("");
     setJob_description("");
     setRequirements("");
-    // setHrdId("");
     setRangeSalary("");
     setResponesibilty("");
     setBenefit("");

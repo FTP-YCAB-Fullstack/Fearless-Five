@@ -3,7 +3,7 @@ const Apply = require("../models/applyModel");
 class Applys {
     static getAll = async (req, res, next) => {
         try {
-            const apply = Apply.find();
+            const apply = await Apply.find();
             res.status(200).json({
                 apply,
             });

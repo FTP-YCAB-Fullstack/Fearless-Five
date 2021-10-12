@@ -1,7 +1,5 @@
 const mongoose = require('mongoose');
 
-const Company = require("./perusahaanModel")
-
 const vacancySchema = new mongoose.Schema({
     role: {
         type: String,
