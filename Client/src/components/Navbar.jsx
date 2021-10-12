@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
-import {Link} from 'react-router-dom';
+import { Link, Redirect } from 'react-router-dom';
 import {useSelector, useDispatch} from 'react-redux'
 
 
@@ -25,7 +25,7 @@ const Navbar = props => {
             <Link to="/listjob">List Job</Link>
             {!auth ? <Link to="/register">Register</Link> : null}
             {!auth ? <Link to="/login">Login</Link> : <Link to="/profile">Profile</Link>}
-            {auth ? <LogOut onClick={clickEvent}>Logout</LogOut> : null}
+            {auth ? <LogOut onClick={clickEvent}>Logout</LogOut> : <Redirect to="/"/>}
         </nav>
     )
 }

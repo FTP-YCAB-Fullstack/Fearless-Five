@@ -7,7 +7,6 @@ import ModalInput from './ModalInput'
 
 const Profile = (props) => {
   const history = useHistory();
-  console.log(history.location.state)
   const dispatch = useDispatch();
   const user = useSelector((state) => state.user);
   const [modal, setModal] = useState(false)
