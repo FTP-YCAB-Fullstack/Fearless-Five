@@ -3,8 +3,10 @@ import axios from 'axios'
 import { Link } from 'react-router-dom';
 import Swal from 'sweetalert2';
 import {useDispatch} from 'react-redux'
+import {useHistory} from 'react-router-dom'
 
 const Login = () => {
+  const history = useHistory()
   const dispatch = useDispatch();
   const [email,setEmail] = useState("")
   const [password,setPassword] = useState("")
@@ -29,6 +31,7 @@ const Login = () => {
       });
       userProfile = userProfile.data;
       dispatch({type: 'ADD_LOGIN', payload: userProfile})
+      history.push('/profile', {test: 'eo'})
     } catch (err) {
       Swal.fire({
         icon: 'error',

@@ -3,8 +3,11 @@ import axios from "axios";
 import { Link } from "react-router-dom";
 import swal from "sweetalert2";
 import {useDispatch} from 'react-redux'
+import {useHistory} from 'react-router-dom'
+
 
 const Regis = () => {
+  const history = useHistory()
   const dispatch = useDispatch()
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
@@ -29,7 +32,8 @@ const Regis = () => {
         }
       });
       profile = profile.data;
-      dispatch({type: 'ADD_LOGIN', payload: profile})
+      dispatch({type: 'ADD_LOGIN', payload: profile});
+      history.push('/profile', {state: 'eo'})
     } catch (err) {
       console.log(err)
       swal.fire({

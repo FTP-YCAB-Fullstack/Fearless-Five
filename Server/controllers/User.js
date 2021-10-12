@@ -37,6 +37,14 @@ class Users {
             next({code: 500, message: err.message})
        }
     }
+    static patch = async (req, res, next) => {
+        try {
+            const updated = await User.findByIdAndUpdate(req.user.id, {...req.body}, {runValidators: true, new: true});
+            res.status(200).json(updated)
+        } catch(err) {
+            next({code: 500, message: err.message})
+        }
+    }
     static Register = async (req, res, next) => {
         try {
              let { name, email, password,role } = req.body;
