@@ -22,7 +22,7 @@ const Navbar = props => {
         <nav className="flex flex-row justify-around">
             <Link to="/">Home</Link>
             {status === 'hrd' ? <Link to="/postjob">Post Job</Link> : null}
-            <Link to="/listjob">List Job</Link>
+            <Link to="/jobs">List Job</Link>
             {!auth ? <Link to="/register">Register</Link> : null}
             {!auth ? <Link to="/login">Login</Link> : <Link to="/profile">Profile</Link>}
             {auth ? <LogOut onClick={clickEvent}>Logout</LogOut> : <Redirect to="/"/>}
