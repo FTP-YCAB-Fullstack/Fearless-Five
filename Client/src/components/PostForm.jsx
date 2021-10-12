@@ -4,12 +4,10 @@ import {useSelector} from 'react-redux'
 
 const PostForm = () => {
   const companyId = useSelector(state => state.user.workNow);
-  // const [companyId, setCompanyId] = useState("");
   const [role, setRole] = useState("");
   const [job_description, setJob_description] = useState("");
   const [requirements, setRequirements] = useState("");
   const hrdId = useSelector(state => state.user._id);
-  // const [hrdId, setHrdId] = useState("");
   const [rangeSalary, setRangeSalary] = useState("");
   const [responsibility, setResponesibilty] = useState("");
   const [benefit, setBenefit] = useState("");
@@ -18,7 +16,6 @@ const PostForm = () => {
 
   const Post = async (data) => {
     try {
-      // console.log(data);
       const token = localStorage.getItem("token");
       let response = await axios.post("http://localhost:3001/vacancies", data, {
         headers: {
@@ -45,11 +42,9 @@ const PostForm = () => {
       mandatorySkills,
       goodToHave,
     };
-    // setCompanyId("");
     setRole("");
     setJob_description("");
     setRequirements("");
-    // setHrdId("");
     setRangeSalary("");
     setResponesibilty("");
     setBenefit("");
@@ -70,12 +65,6 @@ const PostForm = () => {
               onSubmit={handleSumbit}
               className="flex flex-col justify-around"
             >
-              {/* <input
-                placeholder="company"
-                value={companyId}
-                onChange={(e) => setCompanyId(e.target.value)}
-                type="text"
-              /> */}
               <input
                 placeholder="role"
                 value={role}
@@ -94,17 +83,11 @@ const PostForm = () => {
                 onChange={(e) => setRequirements(e.target.value)}
                 type="text"
               />
-              {/* <input
-                placeholder="hrd"
-                value={hrdId}
-                onChange={(e) => setHrdId(e.target.value)}
-                type="text"
-              /> */}
               <input
                 placeholder="rangeSalary"
                 value={rangeSalary}
                 onChange={(e) => setRangeSalary(e.target.value)}
-                type="text"
+                type="number"
               />
               <input
                 placeholder="responsibility"
