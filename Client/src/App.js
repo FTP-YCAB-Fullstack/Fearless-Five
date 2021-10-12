@@ -15,6 +15,7 @@ import PageRegis from "./page/PageRegis";
 import PageForm from "./page/PageForm";
 import PageListJob from "./page/PageListJob";
 import DetailJobPage from "./page/DetailJobPage";
+import PageAbout from "./page/PageAbout";
 
 function App() {
   const dispatch = useDispatch();
@@ -36,6 +37,7 @@ function App() {
         <Route exact path="/" component={PageHome} />
         <Route exact path="/jobs" component={PageListJob}/>
         <Route exact path="/jobs/:id" component={DetailJobPage} />
+        <Route exact path="/about" component={PageAbout}/>
         <HRoutes exact path="/postjob" component={PageForm} />
         <PublicRoute exact path="/login" component={PageLogin} />
         <PublicRoute exact path="/register" component={PageRegis} />
