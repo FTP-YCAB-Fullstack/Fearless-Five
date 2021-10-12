@@ -3,7 +3,7 @@ const Vacancy = require("./../models/vacancyModel");
 class VacancyController {
     static getAll = async (req, res, next) => {
         try {
-            const data = await Vacancy.find().populate('companyId');
+            const data = await Vacancy.find();
             
             res.status(200).json(data)
         } catch(err) {
@@ -21,10 +21,10 @@ class VacancyController {
     }
     static post = async (req, res, next) => {
         try {
-            let {companyId, 
+            let {companyName, 
                 role, 
                 job_description, 
-                hrdId, 
+                hrdEmail, 
                 rangeSalary,
                 responsibility,
                 requirements,
@@ -40,10 +40,10 @@ class VacancyController {
             goodToHave ? goodToHave = goodToHave.split(',') : null
             
             const data = await Vacancy.create({
-                companyId, 
+                companyName, 
                 role, 
                 job_description, 
-                hrdId, 
+                hrdEmail, 
                 rangeSalary,
                 responsibility,
                 requirements,
