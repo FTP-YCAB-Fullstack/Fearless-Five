@@ -1,27 +1,21 @@
 const mongoose = require("mongoose");
 
 const applySchema = new mongoose.Schema({
-    companyId: {
+    companyName: {
         type: String,
         required: true
     },
     vacancyId: {
-        type: String,
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'Vacancy',
         required: true
     },
-    emailPelamar: {
-        type: String,
-        required: true
-    },
-    namaPelamar: {
-        type: String,
+    idPelamar: {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'User',
         required: true
     },
     emailHrd: {
-        type: String,
-        required: true
-    },
-    namaHrd: {
         type: String,
         required: true
     },

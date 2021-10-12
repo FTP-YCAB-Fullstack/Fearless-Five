@@ -7,10 +7,11 @@ import ModalInput from './ModalInput'
 
 const Profile = (props) => {
   const history = useHistory();
-  console.log(history.location.state)
   const dispatch = useDispatch();
   const user = useSelector((state) => state.user);
-  const [modal, setModal] = useState(false)
+  const [modal, setModal] = useState(false);
+
+  const [lamaran, setLamaran] = useState([])
 
 
   const getProfile = async (token) => {
@@ -22,14 +23,27 @@ const Profile = (props) => {
       });
       dispatch({ type: "ADD_LOGIN", payload: data.data });
     } catch (err) {
-      console.log(err);
     }
   };
+
+  const getLamaran = async (id) => {
+    const token = localStorage.getItem("token");
+    const data = await axios.get(`http://localhost:3001/applies?id=${id}`, {
+      headers: {
+        token
+      }
+    });
+    setLamaran(data.data.apply)
+  }
 
   useEffect(() => {
     const token = localStorage.getItem("token");
     getProfile(token);
   }, []);
+
+  useEffect(() => {
+    getLamaran(user._id)
+  }, [user])
 
   return (
     <React.Fragment>
@@ -42,6 +56,7 @@ const Profile = (props) => {
           <p>{user.nationality}</p>
           <p>{user.jobStatus}</p>
           <p>{user.citizen}</p>
+          <p>{user.location}</p>
           <p>{user.summary}</p>
           <p>{user.email}</p>
           <p>{user.workNow}</p>
@@ -56,6 +71,7 @@ const Profile = (props) => {
         </div> :
         null
       }
+      {lamaran.map((el, i) => <p key={i}>{el.companyName}: {el.status.toUpperCase()}</p>)}
     </React.Fragment>
   );
 };

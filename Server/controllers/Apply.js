@@ -3,7 +3,8 @@ const Apply = require("../models/applyModel");
 class Applys {
     static getAll = async (req, res, next) => {
         try {
-            const apply = await Apply.find();
+            const { id } = req.query;
+            const apply = await Apply.find({idPelamar: id}).populate('idPelamar');
             res.status(200).json({
                 apply,
             });
@@ -27,14 +28,13 @@ class Applys {
 
     static post = async (req, res, next) => {
         try {
-            const { companyId, vacancyId, emailPelamar, namaPelamar, emailHrd, namaHrd } = req.body;
+            const { companyName, vacancyId, idPelamar, emailHrd, cv } = req.body;
             const newApply = {
-                companyId,
+                companyName,
                 vacancyId,
-                emailPelamar,
-                namaPelamar,
+                idPelamar,
+                cv,
                 emailHrd,
-                namaHrd
             };
             const apply = await Apply.create(newApply);
             res.status(201).json(apply);
@@ -42,6 +42,19 @@ class Applys {
             next ({code: 500, message: error.message});
         }
     };
+
+    static patch = async (req, res, next) =>  {
+        try {
+            let {id} = req.params;
+            let {status} = req.body;
+            
+            const patch = await Apply.findByIdAndUpdate(id, {status}, {new: true});
+            res.status(200).json(patch)
+
+        } catch(err) {
+            next({code: 500, message: err.message})
+        }
+    }
 
     static deleteId = async (req, res, next) => {
         try {
