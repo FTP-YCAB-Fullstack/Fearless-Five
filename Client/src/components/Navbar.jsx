@@ -25,6 +25,7 @@ const Navbar = props => {
             <Link to="/jobs">List Job</Link>
             {!auth ? <Link to="/register">Register</Link> : null}
             {!auth ? <Link to="/login">Login</Link> : <Link to="/profile">Profile</Link>}
+            <Link to="/about">about</Link>
             {auth ? <LogOut onClick={clickEvent}>Logout</LogOut> : <Redirect to="/"/>}
         </nav>
     )
