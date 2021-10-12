@@ -26,9 +26,9 @@ const Profile = (props) => {
     }
   };
 
-  const getLamaran = async (id) => {
+  const getLamaran = async (fields,id) => {
     const token = localStorage.getItem("token");
-    const data = await axios.get(`http://localhost:3001/applies?id=${id}`, {
+    const data = await axios.get(`http://localhost:3001/applies?${fields}=${id}`, {
       headers: {
         token
       }
@@ -42,7 +42,11 @@ const Profile = (props) => {
   }, []);
 
   useEffect(() => {
-    getLamaran(user._id)
+    if (user.role === 'user') {
+      getLamaran('id',user._id)
+    } else {
+      getLamaran('email', user.email)
+    }
   }, [user])
 
   return (
@@ -71,7 +75,7 @@ const Profile = (props) => {
         </div> :
         null
       }
-      {lamaran.map((el, i) => <p key={i}>{el.companyName}: {el.status.toUpperCase()}</p>)}
+      {lamaran.map((el, i) => <p key={i}>{el.companyName} ({el.vacancyId.role}) : {el.status.toUpperCase()}</p>)}
     </React.Fragment>
   );
 };

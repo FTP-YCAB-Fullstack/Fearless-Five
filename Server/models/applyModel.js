@@ -19,11 +19,6 @@ const applySchema = new mongoose.Schema({
         type: String,
         required: true
     },
-    cv: {
-        type: String,
-        // required: true,
-        default: ""
-    },
     status: {
         type: String,
         required: true,

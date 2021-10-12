@@ -1,11 +1,12 @@
-import React, {useState} from 'react';
+import React, {useState, useEffect} from 'react';
 import {useHistory} from 'react-router-dom'
 import {useSelector} from 'react-redux'
 import axios from 'axios'
 
 const DetailJobPage = props => {
 
-    const [cv, setCv] = useState(null)
+    const [yourData, setYourData] = useState([]);
+    let [canApply, setCanApply] = useState(true)
 
     const state = useSelector(state => state.user)
     const history = useHistory();
@@ -17,7 +18,6 @@ const DetailJobPage = props => {
             vacancyId: data._id,
             idPelamar: state._id,
             emailHrd: data.hrdEmail,
-            cv: 'https://www.cakeresume.com/cdn-cgi/image/fit=scale-down,format=auto,w=600/https://images.cakeresume.com/images/2c3003d8-3041-4ab6-85bc-2947d5fe84e0.png'
         }
         const token = localStorage.getItem('token')
         const result = await axios.post('http://localhost:3001/applies', forServer, {
@@ -26,6 +26,23 @@ const DetailJobPage = props => {
             }
         });
     }
+
+    useEffect(() => {
+        const token = localStorage.getItem('token')
+        axios.get('http://localhost:3001/applies?id='+ state._id, {
+            headers: {
+                token
+            }
+        })
+        .then(res => setYourData(res.data.apply));
+    }, [])
+
+    useEffect(() => {
+        let exist = yourData.find(el => el.vacancyId._id === data._id);
+        if (exist) {
+            setCanApply(false)
+        }
+    }, [yourData])
 
     return (
         <div>
@@ -52,7 +69,7 @@ const DetailJobPage = props => {
             <ul>
                 {data.goodToHave.map(el => <li>{el}</li>)}
             </ul> 
-            <button disabled={state.email === data.hrdEmail ? true : false} className="bg-red-300" onClick={apply}>{state.email === data.hrdEmail ? 'You are same person' : 'Apply'}</button>
+            <button disabled={state.role === 'hrd' || canApply === false ? true : false} className="bg-red-300" onClick={apply}>{state.role === 'hrd' || canApply === false ? 'Cannot Apply' : 'Apply'}</button>
         </div>
     )
 

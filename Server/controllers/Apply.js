@@ -3,8 +3,35 @@ const Apply = require("../models/applyModel");
 class Applys {
     static getAll = async (req, res, next) => {
         try {
-            const { id } = req.query;
-            const apply = await Apply.find({idPelamar: id}).populate('idPelamar');
+            const { id, email } = req.query;
+            let apply;
+            if (id) {
+                apply = await Apply.find({idPelamar: id}).populate([
+                    {
+                        path: 'vacancyId',
+                        model: 'Vacancy',
+                        select: 'role'
+                    },
+                    {
+                        path: 'idPelamar',
+                        model: 'User',
+                        select: 'name cv email workNow profile'
+                    }
+                ]);
+            } else {
+                apply = await Apply.find({emailHrd: email}).populate([
+                    {
+                        path: 'vacancyId',
+                        model: 'Vacancy',
+                        select: 'role'
+                    },
+                    {
+                        path: 'idPelamar',
+                        model: 'User',
+                        select: 'name cv email workNow profile'
+                    }
+                ]);
+            }
             res.status(200).json({
                 apply,
             });
