@@ -1,6 +1,15 @@
 import React from "react";
+import { useHistory } from "react-router-dom";
 
 const CardList = (props) => {
+  const history = useHistory();
+
+  console.log(props);
+
+  const onClickHandler = () => {
+    history.push(`/jobs/${props._id}`, { ...props });
+  };
+
   return (
     <div>
       <form className="flex pb-10 flex-col items-center">
@@ -33,6 +42,12 @@ const CardList = (props) => {
               <br />
               <span>{props.role}</span>
             </span>
+            <button
+              onClick={onClickHandler}
+              className="p-3 bg-red-200 rounded-lg"
+            >
+              Details
+            </button>
           </div>
         </div>
       </div>

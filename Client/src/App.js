@@ -14,6 +14,7 @@ import PageProfile from "./page/PageProfile";
 import PageRegis from "./page/PageRegis";
 import PageForm from "./page/PageForm";
 import PageListJob from "./page/PageListJob";
+import DetailJobPage from "./page/DetailJobPage";
 
 function App() {
   const dispatch = useDispatch();
@@ -33,7 +34,8 @@ function App() {
       <NavG />
       <Switch>
         <Route exact path="/" component={PageHome} />
-        <Route exact path="/listJob" component={PageListJob}/>
+        <Route exact path="/jobs" component={PageListJob}/>
+        <Route exact path="/jobs/:id" component={DetailJobPage} />
         <HRoutes exact path="/postjob" component={PageForm} />
         <PublicRoute exact path="/login" component={PageLogin} />
         <PublicRoute exact path="/register" component={PageRegis} />
