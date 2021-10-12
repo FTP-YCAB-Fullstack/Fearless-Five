@@ -3,11 +3,13 @@ import React, { useState } from "react";
 import {useSelector} from 'react-redux'
 
 const PostForm = () => {
-  const companyId = useSelector(state => state.user.workNow);
+  const companyName = useSelector(state => state.user.workNow);
+  // const [companyId, setCompanyId] = useState("");
   const [role, setRole] = useState("");
   const [job_description, setJob_description] = useState("");
   const [requirements, setRequirements] = useState("");
-  const hrdId = useSelector(state => state.user._id);
+  const hrdEmail = useSelector(state => state.user.email);
+  // const [hrdId, setHrdId] = useState("");
   const [rangeSalary, setRangeSalary] = useState("");
   const [responsibility, setResponesibilty] = useState("");
   const [benefit, setBenefit] = useState("");
@@ -31,11 +33,11 @@ const PostForm = () => {
   const handleSumbit = (e) => {
     e.preventDefault();
     let PostJob = {
-      companyId,
+      companyName,
       role: role,
       job_description,
       requirements,
-      hrdId,
+      hrdEmail,
       rangeSalary: rangeSalary * 1,
       responsibility,
       benefit,
@@ -56,14 +58,14 @@ const PostForm = () => {
   return (
     <div className=" w-screen flex justify-center items-center pt-24">
       <div className="w-96">
-        <div className="flex justify-center">
+        <div className="flex justify-center pb-10">
           <span className="text-3xl font-bold">Post Job</span>
         </div>
         <div className="flex justify-center">
-          <div className=" flex overflow-y-scroll">
+          <div className="w-50">
             <form
               onSubmit={handleSumbit}
-              className="flex flex-col justify-around "
+              className="flex flex-col justify-around h-96 w-80"
             >
               <input
                className="outline-none border-2 border-gray-400 h-8 rounded-md "
@@ -122,7 +124,9 @@ const PostForm = () => {
                 onChange={(e) => setGoodToHave(e.target.value)}
                 type="text"
               />
-              <button>Create</button>
+             <button className="bg-blue-500 text-white h-10 rounded-md">
+              Create account
+            </button>
             </form>
           </div>
         </div>

@@ -9,7 +9,9 @@ const Profile = (props) => {
   const history = useHistory();
   const dispatch = useDispatch();
   const user = useSelector((state) => state.user);
-  const [modal, setModal] = useState(false)
+  const [modal, setModal] = useState(false);
+
+  const [lamaran, setLamaran] = useState([])
 
 
   const getProfile = async (token) => {
@@ -21,14 +23,31 @@ const Profile = (props) => {
       });
       dispatch({ type: "ADD_LOGIN", payload: data.data });
     } catch (err) {
-      console.log(err);
     }
   };
+
+  const getLamaran = async (fields,id) => {
+    const token = localStorage.getItem("token");
+    const data = await axios.get(`http://localhost:3001/applies?${fields}=${id}`, {
+      headers: {
+        token
+      }
+    });
+    setLamaran(data.data.apply)
+  }
 
   useEffect(() => {
     const token = localStorage.getItem("token");
     getProfile(token);
   }, []);
+
+  useEffect(() => {
+    if (user.role === 'user') {
+      getLamaran('id',user._id)
+    } else {
+      getLamaran('email', user.email)
+    }
+  }, [user])
 
   return (
     <React.Fragment>
@@ -41,6 +60,7 @@ const Profile = (props) => {
           <p>{user.nationality}</p>
           <p>{user.jobStatus}</p>
           <p>{user.citizen}</p>
+          <p>{user.location}</p>
           <p>{user.summary}</p>
           <p>{user.email}</p>
           <p>{user.workNow}</p>
@@ -55,6 +75,7 @@ const Profile = (props) => {
         </div> :
         null
       }
+      {lamaran.map((el, i) => <p key={i}>{el.companyName} ({el.vacancyId.role}) : {el.status.toUpperCase()}</p>)}
     </React.Fragment>
   );
 };
