@@ -1,10 +1,13 @@
 import React, {useState, useEffect } from "react";
 import axios from "axios";
 import { useSelector, useDispatch } from "react-redux";
+import {useHistory} from 'react-router-dom'
 
 import ModalInput from './ModalInput'
 
 const Profile = (props) => {
+  const history = useHistory();
+  console.log(history.location.state)
   const dispatch = useDispatch();
   const user = useSelector((state) => state.user);
   const [modal, setModal] = useState(false)
@@ -32,7 +35,7 @@ const Profile = (props) => {
     <React.Fragment>
       {!user.name ? null : (
         <div>
-          <img src={user.profile} alt="noProfile"/>
+          <img src={user.profile} width="80" alt="noProfile"/>
           <h1>{user.name}</h1>
           <p>{user.jobTitle}</p>
           <p>{user.phoneNumber}</p>
