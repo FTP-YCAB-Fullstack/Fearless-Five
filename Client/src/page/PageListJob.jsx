@@ -17,12 +17,18 @@ const PageListJob = () => {
 
   return (
     <div>
-      <div className="flex flex-wrap justify-around w-screen h-96 px-36 mt-10 overflow-y-scroll ">
-        <div className="pb-6">
+      <form className="flex pb-10 flex-col items-center">
+        <span>Search job</span>
+        <input
+          type="text"
+          placeholder="search"
+          className="outline-none border-2 border-gray-400 h-8 w-72 rounded-md"
+        />
+      </form>
+      <div className="flex flex-wrap w-screen h-96 pl-14 mt-10 overflow-y-scroll ">
           {jobs.map((el, index) => (
             <CardList {...el} key={index} />
           ))}
-        </div>
       </div>
     </div>
   );

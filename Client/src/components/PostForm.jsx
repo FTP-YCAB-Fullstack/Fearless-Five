@@ -56,74 +56,80 @@ const PostForm = () => {
   };
 
   return (
-    <div>
-      <div className="">
-        <form
-          onSubmit={handleSumbit}
-          className="flex flex-col justify-around"
-        >
-          {/* <input
-            placeholder="company"
-            value={companyId}
-            onChange={(e) => setCompanyId(e.target.value)}
-            type="text"
-          /> */}
-          <input
-            placeholder="role"
-            value={role}
-            onChange={(e) => setRole(e.target.value)}
-            type="text"
-          />
-          <textarea
-            placeholder="job decsriptions"
-            value={job_description}
-            onChange={(e) => setJob_description(e.target.value)}
-            type="text"
-          ></textarea>
-          <textarea
-            placeholder="requitmen"
-            value={requirements}
-            onChange={(e) => setRequirements(e.target.value)}
-            type="text"
-          />
-          {/* <input
-            placeholder="hrd"
-            value={hrdId}
-            onChange={(e) => setHrdId(e.target.value)}
-            type="text"
-          /> */}
-          <input
-            placeholder="rangeSalary"
-            value={rangeSalary}
-            onChange={(e) => setRangeSalary(e.target.value)}
-            type="text"
-          />
-          <textarea
-            placeholder="responsibility"
-            value={responsibility}
-            onChange={(e) => setResponesibilty(e.target.value)}
-            type="text"
-          />
-          <textarea
-            placeholder="benefit"
-            value={benefit}
-            onChange={(e) => setBenefit(e.target.value)}
-            type="text"
-          />
-          <textarea
-            placeholder="mandatorySkills"
-            value={mandatorySkills}
-            onChange={(e) => setMandatorySkills(e.target.value)}
-            type="text"
-          />
-          <textarea
-            placeholder="goodToHaveSkills"
-            value={goodToHave}
-            onChange={(e) => setGoodToHave(e.target.value)}
-            type="text"
-          />
-          <button>Create</button>
-        </form>
+    <div className=" w-screen flex justify-center items-center pt-24">
+      <div className="w-96">
+        <div className="flex justify-center pb-10">
+          <span className="text-3xl font-bold">Post Job</span>
+        </div>
+        <div className="flex justify-center">
+          <div className="w-50">
+            <form
+              onSubmit={handleSumbit}
+              className="flex flex-col justify-around h-96 w-80"
+            >
+              <input
+               className="outline-none border-2 border-gray-400 h-8 rounded-md "
+                placeholder="role"
+                value={role}
+                onChange={(e) => setRole(e.target.value)}
+                type="text"
+              />
+              <textarea
+               className="outline-none border-2 border-gray-400 h-8 rounded-md "
+                placeholder="job decsriptions"
+                value={job_description}
+                onChange={(e) => setJob_description(e.target.value)}
+                type="text"
+              ></textarea>
+              <input
+               className="outline-none border-2 border-gray-400 h-8 rounded-md "
+                placeholder="requitmen"
+                value={requirements}
+                onChange={(e) => setRequirements(e.target.value)}
+                type="text"
+              />
+              
+              <input
+               className="outline-none border-2 border-gray-400 h-8 rounded-md "
+                placeholder="rangeSalary"
+                value={rangeSalary}
+                onChange={(e) => setRangeSalary(e.target.value)}
+                type="number"
+              />
+              <input
+               className="outline-none border-2 border-gray-400 h-8 rounded-md "
+                placeholder="responsibility"
+                value={responsibility}
+                onChange={(e) => setResponesibilty(e.target.value)}
+                type="text"
+              />
+              <input
+               className="outline-none border-2 border-gray-400 h-8 rounded-md "
+                placeholder="benefit"
+                value={benefit}
+                onChange={(e) => setBenefit(e.target.value)}
+                type="text"
+              />
+              <input
+               className="outline-none border-2 border-gray-400 h-8 rounded-md "
+                placeholder="mandatorySkills"
+                value={mandatorySkills}
+                onChange={(e) => setMandatorySkills(e.target.value)}
+                type="text"
+              />
+              <input
+               className="outline-none border-2 border-gray-400 h-8 rounded-md "
+                placeholder="goodToHaveSkills"
+                value={goodToHave}
+                onChange={(e) => setGoodToHave(e.target.value)}
+                type="text"
+              />
+             <button className="bg-blue-500 text-white h-10 rounded-md">
+              Create account
+            </button>
+            </form>
+          </div>
+        </div>
       </div>
     </div>
   );
