@@ -4,6 +4,7 @@ import { useSelector, useDispatch } from "react-redux";
 import {useHistory} from 'react-router-dom'
 
 import ModalInput from './ModalInput'
+import CardJob from './CardJob'
 
 const Profile = (props) => {
   const history = useHistory();
@@ -75,7 +76,7 @@ const Profile = (props) => {
         </div> :
         null
       }
-      {lamaran.map((el, i) => <p key={i}>{el.companyName} ({el.vacancyId.role}) : {el.status.toUpperCase()}</p>)}
+      {lamaran.map((el, i) => <CardJob key={i} userRole={user.role} {...el}/>)}
     </React.Fragment>
   );
 };
