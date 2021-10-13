@@ -68,8 +68,17 @@ const DetailJobPage = props => {
             <h1 className="text-lg font-bold">Good To Have Skills</h1>
             <ul>
                 {data.goodToHave.map(el => <li>{el}</li>)}
-            </ul> 
-            <button disabled={state.role === 'hrd' || canApply === false ? true : false} className="bg-red-300" onClick={apply}>{state.role === 'hrd' || canApply === false ? 'Cannot Apply' : 'Apply'}</button>
+            </ul>
+            {
+                state.cv ?
+                <button 
+                    disabled={state.role === 'hrd' || canApply === false ? true : false} 
+                    className="bg-red-300" 
+                    onClick={apply}>
+                        {state.role === 'hrd' || canApply === false ? 'Cannot Apply' : 'Apply'}
+                </button> :
+                <p>You cannot apply before you upload your cv</p>
+            }
         </div>
     )
 

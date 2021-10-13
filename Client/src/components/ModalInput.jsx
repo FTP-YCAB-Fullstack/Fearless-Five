@@ -2,6 +2,8 @@ import axios from 'axios';
 import React, {useState} from 'react';
 import {useSelector, useDispatch} from 'react-redux';
 import {storage} from './../firebase/index'
+import Swal from './../utils/Swal'
+
 
 const ModalInput = props => {
     const dispatch = useDispatch()
@@ -46,7 +48,8 @@ const ModalInput = props => {
                     token
                 }
             });
-            dispatch({type: 'ADD_LOGIN', payload: response.data})
+            dispatch({type: 'ADD_LOGIN', payload: response.data});
+            await Swal('success', 'Success Updating your profile')
         } else {
             const uploadTask = storage.ref(`images/${profilePic.name}`).put(profilePic);
             uploadTask.on('state_changed', snapshot => {}, err => console.log(err), async () => {
@@ -62,6 +65,7 @@ const ModalInput = props => {
                     }
                 });
                 dispatch({type: 'ADD_LOGIN', payload: response.data})
+                await Swal('success', 'Success Updating your profile')
             })
         }
     }
@@ -78,7 +82,7 @@ const ModalInput = props => {
          () =>{
              storage.ref("cv-user").child(cvUser.name).getDownloadURL().then(url=>{
                  const forServer = {
-                     ...profile,
+                     ...user,
                      cv:url
                  }
                  const token = localStorage.getItem('token')
@@ -87,11 +91,11 @@ const ModalInput = props => {
                          token
                      }
                  }).then(result=>{
-                     console.log(result)
                      dispatch({type:"ADD_LOGIN",payload:result.data})
+                     Swal('success', 'Success Updating your profile')
                  })
              }).catch(error =>{
-                 console.log(error)
+                 Swal('error', 'Oops something went wrong')
              })
          }
      )

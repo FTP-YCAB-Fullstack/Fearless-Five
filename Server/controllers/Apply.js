@@ -74,8 +74,8 @@ class Applys {
         try {
             let {id} = req.params;
             let {status} = req.body;
-            
-            const patch = await Apply.findByIdAndUpdate(id, {status}, {new: true});
+
+            const patch = await Apply.findByIdAndUpdate(id, {status}, {runValidators: true,new: true});
             res.status(200).json(patch)
 
         } catch(err) {
