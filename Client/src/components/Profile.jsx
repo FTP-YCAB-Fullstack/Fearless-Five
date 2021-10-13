@@ -2,6 +2,7 @@ import React, {useState, useEffect } from "react";
 import axios from "axios";
 import { useSelector, useDispatch } from "react-redux";
 import {useHistory} from 'react-router-dom'
+import Swal from './../utils/Swal'
 
 import ModalInput from './ModalInput'
 import CardJob from './CardJob'
@@ -65,6 +66,7 @@ const Profile = (props) => {
           <p>{user.summary}</p>
           <p>{user.email}</p>
           <p>{user.workNow}</p>
+          {user.cv ? <a className="text-blue-300" href={user.cv}>Check CV</a> : null}
         </div>
       )}
       <button onClick={() => setModal(true)}>Edit</button>
