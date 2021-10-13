@@ -4,8 +4,10 @@ import axios from "axios";
 
 const PageListJob = () => {
   const [jobs, setJobs] = useState([]);
+  const [filter, setFilter] = useState('');
+  
+  const token = localStorage.getItem("token");
   useEffect(() => {
-    const token = localStorage.getItem("token");
     axios
       .get("http://localhost:3001/vacancies", {
         headers: {
@@ -15,14 +17,25 @@ const PageListJob = () => {
       .then((res) => setJobs(res.data));
   }, []);
 
+  useEffect(() => {
+    axios.get(`http://localhost:3001/vacancies?category=${filter}`, {
+      headers: {
+        token
+      }
+    })
+    .then(res => setJobs(res.data))
+  }, [filter])
+
   return (
     <div>
       <form className="flex pb-10 flex-col items-center">
         <span>Search job</span>
         <input
+          value={filter}
           type="text"
           placeholder="search"
           className="outline-none border-2 border-gray-400 h-8 w-72 rounded-md"
+          onChange={(e) => setFilter(e.target.value)}
         />
       </form>
       <div className="flex flex-wrap w-screen h-96 pl-14 mt-10 overflow-y-scroll ">

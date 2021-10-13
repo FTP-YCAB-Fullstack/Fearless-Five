@@ -4,8 +4,6 @@ import { useHistory } from "react-router-dom";
 const CardList = (props) => {
   const history = useHistory();
 
-  console.log(props);
-
   const onClickHandler = () => {
     history.push(`/jobs/${props._id}`, { ...props });
   };

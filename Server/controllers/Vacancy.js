@@ -3,7 +3,14 @@ const Vacancy = require("./../models/vacancyModel");
 class VacancyController {
     static getAll = async (req, res, next) => {
         try {
-            const data = await Vacancy.find();
+            let data;
+
+            if (req.query.category) {
+                let query = new RegExp(req.query.category)
+                data =  await Vacancy.find({role: {$regex: query, $options: 'i'}});
+            } else {
+                data = await Vacancy.find();
+            }
             
             res.status(200).json(data)
         } catch(err) {
