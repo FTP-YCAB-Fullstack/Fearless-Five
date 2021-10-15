@@ -1,15 +1,12 @@
 import React, {useState, useEffect } from "react";
 import axios from "axios";
 import { useSelector, useDispatch } from "react-redux";
-import {useHistory} from 'react-router-dom'
-import Swal from './../utils/Swal'
 
 import ModalInput from './ModalInput'
 import CardJob from './CardJob'
 import CardList from './CardList'
 
 const Profile = (props) => {
-  const history = useHistory();
   const dispatch = useDispatch();
   const user = useSelector((state) => state.user);
   const [modal, setModal] = useState(false);
@@ -94,7 +91,7 @@ const Profile = (props) => {
         </div> :
         null
       }
-      {lamaran.map((el, i) => <CardJob key={i} userRole={user.role} {...el}/>)}
+      {lamaran.map((el, i) => <CardJob getLamaran={getLamaran} email={user.email} key={i} userRole={user.role} {...el}/>)}
       {job.map((el, i) => <CardList key={i} {...el}/>)}
     </React.Fragment>
   );

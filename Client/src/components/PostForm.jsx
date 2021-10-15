@@ -1,6 +1,7 @@
 import axios from "axios";
 import React, { useState } from "react";
 import {useSelector} from 'react-redux'
+import Swal from './../utils/Swal'
 
 const PostForm = () => {
   const companyName = useSelector(state => state.user.workNow);
@@ -24,7 +25,7 @@ const PostForm = () => {
           token,
         },
       });
-      console.log(response.data);
+      Swal('success', 'New job posted!')
     } catch (error) {
       console.log(error);
     }
