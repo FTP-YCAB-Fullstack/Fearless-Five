@@ -68,21 +68,74 @@ const Profile = (props) => {
     <React.Fragment>
       {!user.name ? null : (
         <div>
-          <img src={user.profile} width="80" alt="noProfile"/>
-          <h1>{user.name}</h1>
-          <p>{user.jobTitle}</p>
-          <p>{user.phoneNumber}</p>
-          <p>{user.nationality}</p>
-          <p>{user.jobStatus}</p>
-          <p>{user.citizen}</p>
-          <p>{user.location}</p>
-          <p>{user.summary}</p>
-          <p>{user.email}</p>
-          <p>{user.workNow}</p>
-          {user.cv ? <a className="text-blue-300" href={user.cv}>Check CV</a> : null}
+        <div className="mt-12 ml-16 mb-8 flex flex-row">
+              <div>
+                <img className="rounded-full" src={user.profile} width="160" alt="noProfile"/>
+              </div>
+
+              <div className="ml-6">
+                <div className="flex flex-row">
+                  <div className="text-2xl font-bold">
+                    <h1>{user.name}</h1>
+                  </div>
+
+                  <div className="ml-6">
+                    <button className="font-light text-blue-500 text-xl" onClick={() => setModal(true)}>Edit profile</button>
+                  </div>
+                </div>
+                
+                <div className="border border-gray-500 rounded w-96 h-3/5 p-1 mt-8">
+                  <p>{user.summary}</p>
+                </div>
+              </div>
         </div>
+
+        <div className="ml-16">
+          <div>
+            <h1 className="text-xl font-extrabold">Email</h1>
+            <p className="font-semibold">{user.email}</p>
+            <div className="border-b-2 border-gray-400 mt-2 w-11/12"></div>
+          </div>
+
+          <div className="mt-4">
+            <h1 className="text-xl font-extrabold">Phone number</h1> 
+            <p className="font-semibold">{user.phoneNumber}</p>
+            <div className="border-b-2 border-gray-400 mt-2 w-11/12"></div>
+          </div>
+
+          <div className="mt-4">
+            <h1 className="text-xl font-extrabold">Location</h1>
+            <p className="font-semibold">{user.location}</p>
+            <div className="border-b-2 border-gray-400 mt-2 w-11/12"></div>
+          </div>
+
+          <div className="mt-4">
+            <h1 className="text-xl font-extrabold">Job</h1>
+            <p className="font-semibold">{user.jobTitle}</p>
+            <div className="border-b-2 border-gray-400 mt-2 w-11/12"></div>
+          </div>
+
+          <div className="mt-4">
+            <h1 className="text-xl font-extrabold">Status</h1>
+            <p className="font-semibold">{user.jobStatus}</p>
+            <div className="border-b-2 border-gray-400 mt-2 w-11/12"></div>
+          </div>
+
+          <div className="mt-4">
+            <h1 className="text-xl font-extrabold">Worknow</h1>
+            <p className="font-semibold">{user.workNow}</p>
+            <div className="border-b-2 border-gray-400 mt-2 w-11/12"></div>
+          </div>
+        </div>
+
+        <p>{user.nationality}</p>
+        <p>{user.citizen}</p>
+
+        <div className="flex justify-center items-center mt-4">
+          {user.cv ? <a className="font-bold bg-blue-500 text-white h-auto w-max p-2 rounded-lg" href={user.cv}>Check CV</a> : null}
+        </div>
+      </div>
       )}
-      <button onClick={() => setModal(true)}>Edit</button>
       {
         modal ? 
         <div>

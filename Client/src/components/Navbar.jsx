@@ -21,15 +21,17 @@ const Navbar = props => {
     }
 
     return (
-        <nav className="flex flex-row justify-around">
-            <Link to="/">Home</Link>
-            {status === 'hrd' ? <Link to="/postjob">Post Job</Link> : null}
-            {auth ? <Link to="/jobs">List Job</Link> : null}
-            {!auth ? <Link to="/register">Register</Link> : null}
-            {!auth ? <Link to="/login">Login</Link> : <Link to="/profile">Profile</Link>}
-            <Link to="/about">about</Link>
-            {auth ? <LogOut onClick={clickEvent}>Logout</LogOut> : <Redirect to="/"/>}
-        </nav>
+        <>
+            <nav className="flex flex-row w-auto sticky top-0 font-semibold px-4 py-1.5 h-12 text-gray-500 bg-white">
+                <Link className="px-6" to="/">Home</Link>
+                {status === 'hrd' ? <Link className="px-6" to="/postjob">Post Job</Link> : null}
+                {auth ? <Link className="px-6" to="/jobs">List Job</Link> : null}
+                {!auth ? <Link className="px-6" to="/register">Register</Link> : null}
+                {!auth ? <Link className="px-6" to="/login">Login</Link> : <Link to="/profile">Profile</Link>}
+                <Link className="px-6" to="/about">about</Link>
+                {auth ? <LogOut onClick={clickEvent}>Logout</LogOut> : <Redirect to="/"/>}
+            </nav>
+        </>
     )
 }
 
