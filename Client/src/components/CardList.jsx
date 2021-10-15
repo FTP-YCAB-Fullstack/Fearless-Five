@@ -11,7 +11,7 @@ const CardList = (props) => {
   return (
     <div>
       <div className=" pl-24 pb-10">
-        <div className="bg-gray-50 w-72 h-64 py-2 pl-2 filter drop-shadow-lg">
+        <div className="bg-gray-50 w-72 h-auto py-2 pl-2 filter drop-shadow-lg">
           <div className="h-20 flex justify-evenly pt-1">
             <div className="bg-gray-400 w-20">
               <span>kotak</span>
@@ -32,7 +32,8 @@ const CardList = (props) => {
               <br />
               <span>{props.role}</span>
             </span>
-            <button onClick={onClickHandler}>apply</button>
+            <br />
+            <button onClick={onClickHandler} className="bg-gray-500">apply</button>
           </div>
         </div>
       </div>

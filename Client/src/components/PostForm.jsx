@@ -81,7 +81,7 @@ const PostForm = () => {
                 onChange={(e) => setJob_description(e.target.value)}
                 type="text"
               ></textarea>
-              <input
+              <textarea
                className="outline-none border-2 border-gray-400 h-8 rounded-md "
                 placeholder="requitmen"
                 value={requirements}
@@ -96,7 +96,7 @@ const PostForm = () => {
                 onChange={(e) => setRangeSalary(e.target.value)}
                 type="number"
               />
-              <input
+              <textarea
                className="outline-none border-2 border-gray-400 h-8 rounded-md "
                 placeholder="responsibility"
                 value={responsibility}
