@@ -90,11 +90,11 @@ const PostForm = () => {
               />
               
               <input
-               className="outline-none border-2 border-gray-400 h-8 rounded-md "
+                type="number"
+                className="outline-none border-2 border-gray-400 h-8 rounded-md "
                 placeholder="rangeSalary"
                 value={rangeSalary}
                 onChange={(e) => setRangeSalary(e.target.value)}
-                type="number"
               />
               <input
                className="outline-none border-2 border-gray-400 h-8 rounded-md "

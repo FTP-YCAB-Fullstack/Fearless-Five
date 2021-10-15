@@ -8,8 +8,10 @@ class VacancyController {
             if (req.query.category) {
                 let query = new RegExp(req.query.category)
                 data =  await Vacancy.find({role: {$regex: query, $options: 'i'}});
+            } else if (req.query.hrdEmail) {
+                data = await Vacancy.find({hrdEmail: req.query.hrdEmail});
             } else {
-                data = await Vacancy.find();
+                data = await Vacancy.find()
             }
             
             res.status(200).json(data)
@@ -64,50 +66,21 @@ class VacancyController {
             next({code: 500, message: err.message})
         }
     }
-    // static patch = async (req, res, next) => {
-    //     try {
-    //         let {id} = req.params
-    //         let {companyId, 
-    //             role, 
-    //             job_description, 
-    //             hrdId, 
-    //             rangeSalary,
-    //             responsibility,
-    //             requirements,
-    //             benefit,
-    //             mandatorySkills,
-    //             goodToHave
-    //         } = req.body;
+    static patch = async (req, res, next) => {
+        try {
+            const {status} = req.body;
+            const {id} = req.params;
 
-    //         for (let i in req.body) {
-    //             if (!req.body[i]) delete req.body[i]
-    //         }
+            const data = await Vacancy.findByIdAndUpdate(id, {status});
 
-    //         mandatorySkills ? mandatorySkills = mandatorySkills.split(',') : null
-    //         benefit ?  benefit = benefit.split(',') : null
-    //         requirements ? requirements = requirements.split(',') : null
-    //         responsibility ? responsibility = responsibility.split(',') : null
-    //         goodToHave ? goodToHave = responsibility.split(',') : null
+            res.status(200).json({
+                message: 'updated'
+            })
 
-    //         const update = await Vacancy.findByIdAndUpdate(id, {
-    //             companyId, 
-    //             role, 
-    //             job_description, 
-    //             hrdId, 
-    //             rangeSalary,
-    //             responsibility,
-    //             requirements,
-    //             benefit,
-    //             mandatorySkills,
-    //             goodToHave
-    //         }, {runValidators: true, new: true});
-
-    //         res.status(200).json(update)
-
-    //     } catch(err) {
-    //         next({code: 500, message: err.message})
-    //     }
-    // }
+        } catch(err) {
+            next({code: 500, message: err.message})
+        }
+    }
     static deleteId = async (req, res, next) => {
         try {
             const {id} = req.params
