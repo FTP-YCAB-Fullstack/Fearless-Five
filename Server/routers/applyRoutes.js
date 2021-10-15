@@ -6,6 +6,6 @@ router.get("/applies", auth.authentication, auth.authorization(["user", "hrd"]),
 router.get("/applies/:_id", controller.getById);
 router.post("/applies", auth.authentication, auth.authorization(["user"]), controller.post);
 router.patch("/applies/:id", auth.authentication, auth.authorization(["hrd"]), controller.patch);
-router.delete("/applies/:_id", auth.authentication, auth.authorization(["user"]), controller.deleteId);
+router.delete("/applies/:_id", auth.authentication, auth.authorization(["user", "hrd"]), controller.deleteId);
 
 module.exports = router;
