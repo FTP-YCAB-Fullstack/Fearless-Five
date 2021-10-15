@@ -26,11 +26,11 @@ const CardJob = props => {
     return (
         <div className="w-96 h-64 border-2 border-red-200">
             <h1>{props.companyName}</h1>
-            {props.userRole === 'hrd' ? <h1>{props.idPelamar.name}</h1> : null}
+            {props.userRole === 'hrd' ? <a href={props.idPelamar.cv}>{props.idPelamar.name}</a> : null}
             <h1>{props.vacancyId.role}</h1>
             <h1 className="bg-yellow-500 text-white">{props.status}</h1>
-            {props.userRole === 'hrd' ? <button onClick={() => buttonHandler('accept')} className="p-2 bg-red-200 mx-3">Approve</button> : null}
-            {props.userRole === 'hrd' ? <button onClick={() => buttonHandler('reject')} className="p-2 bg-red-200 mx-3">Reject</button> : null}
+            {props.userRole === 'hrd' && props.status === 'Pending' ? <button onClick={() => buttonHandler('accept')} className="p-2 bg-red-200 mx-3">Approve</button> : null}
+            {props.userRole === 'hrd' && props.status === 'Pending' ? <button onClick={() => buttonHandler('reject')} className="p-2 bg-red-200 mx-3">Reject</button> : null}
         </div>
     )
 } 

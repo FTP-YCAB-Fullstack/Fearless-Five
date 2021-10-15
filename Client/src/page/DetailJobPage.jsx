@@ -4,7 +4,8 @@ import {useSelector} from 'react-redux'
 import axios from 'axios'
 
 const DetailJobPage = props => {
-
+    
+    const token = localStorage.getItem('token')
     const [yourData, setYourData] = useState([]);
     let [canApply, setCanApply] = useState(true)
 
@@ -19,8 +20,19 @@ const DetailJobPage = props => {
             idPelamar: state._id,
             emailHrd: data.hrdEmail,
         }
-        const token = localStorage.getItem('token')
         const result = await axios.post('http://localhost:3001/applies', forServer, {
+            headers: {
+                token
+            }
+        });
+    }
+
+    const close = async () => {
+        const patch = {
+            status: 'closed'
+        };
+        const upd = await axios.patch(`http://localhost:3001/vacancies/${data._id}`, patch,
+        {
             headers: {
                 token
             }
@@ -46,6 +58,7 @@ const DetailJobPage = props => {
 
     return (
         <div>
+            <h2>{data.status === 'open' ? 'OPEN' : 'CLOSED'}</h2>
             <p>{data.companyName}</p>
             <p>{data.rangeSalary}</p>
             <p>{data.hrdEmail}</p>
@@ -79,6 +92,15 @@ const DetailJobPage = props => {
                 </button> :
                 <p>You cannot apply before you upload your cv</p>
             }
+            {
+                data.hrdEmail === state.email ?
+                <button
+                    onClick={close}
+                >
+                    Close Job
+                </button>
+                : null
+            }   
         </div>
     )
 

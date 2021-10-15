@@ -9,7 +9,7 @@ const CardList = (props) => {
   };
 
   return (
-    <div>
+    <div className={props.status === 'open' ? '' : 'hidden'}>
       <div className=" pl-24 pb-10">
         <div className="bg-gray-50 w-72 h-64 py-2 pl-2 filter drop-shadow-lg">
           <div className="h-20 flex justify-evenly pt-1">
