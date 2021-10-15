@@ -41,6 +41,10 @@ const vacancySchema = new mongoose.Schema({
         type: String,
         required: true,
         default: ""
+    },
+    status: {
+        type: String,
+        default: "open"
     }
 });
 

@@ -1,10 +1,12 @@
 import React, {useState, useEffect} from 'react';
 import {useHistory} from 'react-router-dom'
 import {useSelector} from 'react-redux'
+import Swal from './../utils/Swal'
 import axios from 'axios'
 
 const DetailJobPage = props => {
-
+    
+    const token = localStorage.getItem('token')
     const [yourData, setYourData] = useState([]);
     let [canApply, setCanApply] = useState(true)
 
@@ -13,14 +15,31 @@ const DetailJobPage = props => {
     let data = history.location.state
 
     const apply = async () => {
-        const forServer = {
-            companyName: data.companyName,
-            vacancyId: data._id,
-            idPelamar: state._id,
-            emailHrd: data.hrdEmail,
-        }
-        const token = localStorage.getItem('token')
-        const result = await axios.post('http://localhost:3001/applies', forServer, {
+        try {
+            const forServer = {
+                companyName: data.companyName,
+                vacancyId: data._id,
+                idPelamar: state._id,
+                emailHrd: data.hrdEmail,
+            }
+            const result = await axios.post('http://localhost:3001/applies', forServer, {
+                headers: {
+                    token
+                }
+            });
+            Swal('success', 'Apply Success')
+            history.push('/profile');
+        } catch(err) {
+            Swal('error', 'Something went wrong')
+        }   
+    }
+
+    const close = async () => {
+        const patch = {
+            status: 'closed'
+        };
+        const upd = await axios.patch(`http://localhost:3001/vacancies/${data._id}`, patch,
+        {
             headers: {
                 token
             }
@@ -46,6 +65,7 @@ const DetailJobPage = props => {
 
     return (
         <div>
+            <h2>{data.status === 'open' ? 'OPEN' : 'CLOSED'}</h2>
             <p>{data.companyName}</p>
             <p>{data.rangeSalary}</p>
             <p>{data.hrdEmail}</p>
@@ -79,6 +99,15 @@ const DetailJobPage = props => {
                 </button> :
                 <p>You cannot apply before you upload your cv</p>
             }
+            {
+                data.hrdEmail === state.email ?
+                <button
+                    onClick={close}
+                >
+                    Close Job
+                </button>
+                : null
+            }   
         </div>
     )
 

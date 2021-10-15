@@ -16,13 +16,6 @@ const Login = () => {
       let response = await axios.post('http://localhost:3001/users/login', data);
       response = response.data;
       localStorage.setItem('token', response.token)
-      
-      Swal.fire({
-        icon: 'success',
-        title: 'Success',
-        text: 'Login Success',
-      });
-
       const token = localStorage.getItem('token');
       let userProfile = await axios.get('http://localhost:3001/users', {
         headers: {
