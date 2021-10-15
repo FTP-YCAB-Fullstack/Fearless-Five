@@ -1,6 +1,7 @@
 import React, {useState, useEffect} from 'react';
 import {useHistory} from 'react-router-dom'
 import {useSelector} from 'react-redux'
+import Swal from './../utils/Swal'
 import axios from 'axios'
 
 const DetailJobPage = props => {
@@ -14,17 +15,23 @@ const DetailJobPage = props => {
     let data = history.location.state
 
     const apply = async () => {
-        const forServer = {
-            companyName: data.companyName,
-            vacancyId: data._id,
-            idPelamar: state._id,
-            emailHrd: data.hrdEmail,
-        }
-        const result = await axios.post('http://localhost:3001/applies', forServer, {
-            headers: {
-                token
+        try {
+            const forServer = {
+                companyName: data.companyName,
+                vacancyId: data._id,
+                idPelamar: state._id,
+                emailHrd: data.hrdEmail,
             }
-        });
+            const result = await axios.post('http://localhost:3001/applies', forServer, {
+                headers: {
+                    token
+                }
+            });
+            Swal('success', 'Apply Success')
+            history.push('/profile');
+        } catch(err) {
+            Swal('error', 'Something went wrong')
+        }   
     }
 
     const close = async () => {

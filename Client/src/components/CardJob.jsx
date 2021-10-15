@@ -21,6 +21,7 @@ const CardJob = props => {
                 })
                 break;
         }
+        props.getLamaran('email', props.email);
     }
 
     return (
