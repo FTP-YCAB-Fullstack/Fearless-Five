@@ -23,7 +23,6 @@ const ModalInput = props => {
             setCvUser(e.target.files[0])
         }
     }
-    console.log(cvUser)
 
     const changeHandler = e => {
         const {name, value} = e.target;
@@ -111,7 +110,7 @@ const ModalInput = props => {
                 <input className="w-full p-2 border-2 rounded-lg border-gray-100" onChange={changeHandler} value={profile.jobTitle} name="jobTitle" type="text" autoComplete="off" placeholder="Job Title"/>
                 <input className="w-full p-2 border-2 rounded-lg border-gray-100" onChange={changeHandler} value={profile.email} name="email" type="email" autoComplete="off" placeholder="Email"/>
                 <input className="w-full p-2 border-2 rounded-lg border-gray-100" onChange={changeHandler} value={profile.location} name="location" type="text" autoComplete="off" placeholder="Location"/>
-                <input className="w-full p-2 border-2 rounded-lg border-gray-100" onChange={changeHandler} value={profile.workNow} name="workNow" type="text" autoComplete="off" placeholder="Company"/>
+                <input className="w-full p-2 border-2 rounded-lg border-gray-100" onChange={changeHandler} value={profile.workNow} name="workNow" type="text" autoComplete="off" minLength="5" maxLength="14" placeholder="Company"/>
                 <input className="w-full p-2 border-2 rounded-lg border-gray-100" onChange={changeHandler} value={profile.jobStatus} name="jobStatus" type="text" autoComplete="off" placeholder="Job Status"/>
                 <textarea className="w-full p-2 border-2 rounded-lg border-gray-100" onChange={changeHandler} value={profile.summary} name="summary" type="text" autoComplete="off" placeholder="Job Status"/>
                 <button className="block p-2 bg-blue-300 rounded-lg">Submit</button>
