@@ -16,6 +16,8 @@ import PageForm from "./page/PageForm";
 import PageListJob from "./page/PageListJob";
 import DetailJobPage from "./page/DetailJobPage";
 import PageAbout from "./page/PageAbout";
+import ChatPage from './page/ChatPage'
+
 
 function App() {
   const dispatch = useDispatch();
@@ -42,6 +44,7 @@ function App() {
         <PublicRoute exact path="/login" component={PageLogin} />
         <PublicRoute exact path="/register" component={PageRegis} />
         <PrivateRoute exact path="/profile" component={PageProfile} />
+        <PrivateRoute exact path='/profile/chat' component={ChatPage} />
       </Switch>
     </div>
   );

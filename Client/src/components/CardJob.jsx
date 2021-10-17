@@ -1,9 +1,13 @@
 import React from 'react';
 import axios from 'axios';
 import Swal from 'sweetalert2'
+import { useHistory } from 'react-router';
+
+import ChatPage from './../page/ChatPage'
 
 const CardJob = props => {
-    const token = localStorage.getItem('token')
+    const token = localStorage.getItem('token');
+    const history = useHistory();
 
     const buttonHandler = action => {
         Swal.fire({
@@ -58,6 +62,13 @@ const CardJob = props => {
         });
     }
 
+    const goToChat = () => {
+        const state = {
+            room: `${props.vacancyId._id}${props.idPelamar._id}`
+        }
+        history.push('/profile/chat', state)
+    }
+
     return (
         <div className="w-96 h-64 border-2 border-red-200">
             <h1>{props.companyName}</h1>
@@ -67,6 +78,7 @@ const CardJob = props => {
             {props.userRole === 'hrd' && props.status === 'Pending' ? <button onClick={() => buttonHandler('accept')} className="p-2 bg-red-200 mx-3">Approve</button> : null}
             {props.userRole === 'hrd' && props.status === 'Pending' ? <button onClick={() => buttonHandler('reject')} className="p-2 bg-red-200 mx-3">Reject</button> : null}
             {props.status === 'Rejected' || props.status === 'Accepted' ? <button onClick={() => deleteApply()} className="p-2 bg-red-200 mx-3">Delete</button> : null}
+            {props.status === 'Accepted' && <button onClick={goToChat}>Chat</button>}
         </div>
     )
 } 
