@@ -105,7 +105,7 @@ const ModalInput = props => {
         <div>
             <div className="flex justify-end pb-5 pt-2">
                 <div>
-                    <button className="bg-red-600 h-6 w-6 rounded-full text-md font-bold text-white" onClick={}>X</button>
+                    <button className="bg-red-600 h-6 w-6 rounded-full text-md font-bold text-white">X</button>
                 </div>
             </div>
             <div className="flex flex-col w-full justify-center items-center pl-4">
