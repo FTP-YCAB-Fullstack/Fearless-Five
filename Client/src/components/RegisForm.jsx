@@ -2,13 +2,21 @@ import React, { useState } from "react";
 import axios from "axios";
 import { Link } from "react-router-dom";
 import swal from "sweetalert2";
-import {useDispatch} from 'react-redux'
-import {useHistory} from 'react-router-dom'
+import { useDispatch } from "react-redux";
+import { useHistory } from "react-router-dom";
+import style from "styled-components";
 
+const BodyList = style.div`
+    width:50rem
+  `;
+
+const Text = style.h1`
+   padding-left:12.5rem
+  `;
 
 const Regis = () => {
-  const history = useHistory()
-  const dispatch = useDispatch()
+  const history = useHistory();
+  const dispatch = useDispatch();
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -16,26 +24,32 @@ const Regis = () => {
 
   const postRegis = async (data) => {
     try {
-      let response = await axios.post("http://localhost:3001/users/register", data);
+      let response = await axios.post(
+        "http://localhost:3001/users/register",
+        data
+      );
       response = response;
       swal.fire({
         icon: "success",
         title: "Sign Up Success!",
         text: "Your account is successfully registered",
       });
-      let login = await axios.post('http://localhost:3001/users/login', {email, password});
+      let login = await axios.post("http://localhost:3001/users/login", {
+        email,
+        password,
+      });
       login = login.data.token;
-      localStorage.setItem('token', login)
-      let profile = await axios.get('http://localhost:3001/users', {
+      localStorage.setItem("token", login);
+      let profile = await axios.get("http://localhost:3001/users", {
         headers: {
-          token: login
-        }
+          token: login,
+        },
       });
       profile = profile.data;
-      dispatch({type: 'ADD_LOGIN', payload: profile});
-      history.push('/profile', {state: 'eo'})
+      dispatch({ type: "ADD_LOGIN", payload: profile });
+      history.push("/profile", { state: "eo" });
     } catch (err) {
-      console.log(err)
+      console.log(err);
       swal.fire({
         icon: "error",
         title: "Oops...",
@@ -60,22 +74,22 @@ const Regis = () => {
   };
 
   return (
-    <div className="h-screen w-screen flex justify-center items-center">
-      <div className="w-96">
+    <div className="h-full pt-10 w-screen flex justify-center items-center">
+      <BodyList className=" bg-gray-50 h-auto py-3 pl-2 filter drop-shadow-lg">
         <div>
-          <span className="text-4xl flex justify-center h-32">logo</span>
+          <span className="text-4xl flex justify-center h-20">logo</span>
         </div>
         <div>
-          <h1 className="text-lg font-bold h-20">Register</h1>
+          <Text className="text-lg font-bold h-20">Register</Text>
         </div>
-        <div>
+        <div className="flex flex-col items-center">
           <form
-            className="flex flex-col h-80 justify-between"
+            className="flex flex-col h-80 w-96 justify-between"
             onSubmit={handleSumbit}
           >
             <span className="h-4">name</span>
             <input
-              className="outline-none border-2 border-gray-400 h-8 rounded-md "
+              className="outline-none border-2 border-gray-400 h-8 rounded-md pl-2 "
               type="text"
               value={name}
               onChange={(e) => setName(e.target.value)}
@@ -83,7 +97,7 @@ const Regis = () => {
             />
             <span className="h-4">email</span>
             <input
-              className="outline-none border-2 border-gray-400 h-8 rounded-md "
+              className="outline-none border-2 border-gray-400 h-8 rounded-md pl-2 "
               type="text"
               value={email}
               onChange={(e) => setEmail(e.target.value)}
@@ -91,7 +105,7 @@ const Regis = () => {
             />
             <span className="h-4">password</span>
             <input
-              className="outline-none border-2 border-gray-400 h-8 rounded-md "
+              className="outline-none border-2 border-gray-400 h-8 rounded-md pl-2 "
               type="password"
               value={password}
               onChange={(e) => setPassword(e.target.value)}
@@ -120,9 +134,11 @@ const Regis = () => {
                 <span className="text-base font-bold ">Job Poster</span>
               </div>
             </div>
-            <button className="bg-blue-500 text-white h-10 rounded-md">
+            <div className="flex justify-center">
+              <button className="bg-blue-500 text-white h-10 rounded-md w-32">
               Create account
-            </button>
+              </button>
+            </div>
             <div>
               <p className="italic text-center">
                 Sudah mempunyai akun?
@@ -133,7 +149,7 @@ const Regis = () => {
             </div>
           </form>
         </div>
-      </div>
+      </BodyList>
     </div>
   );
 };

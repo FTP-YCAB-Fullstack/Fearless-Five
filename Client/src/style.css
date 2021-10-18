@@ -603,6 +603,11 @@ video {
   border-color: rgba(229, 231, 235, var(--tw-border-opacity));
 }
 
+::-webkit-scrollbar {
+  width: 16px;
+  height: 16px;
+}
+
 .container {
   width: 100%;
 }
