@@ -3,6 +3,18 @@ import styled from 'styled-components';
 import { Link, Redirect, useHistory } from 'react-router-dom';
 import {useSelector, useDispatch} from 'react-redux'
 
+const Nav = styled.nav`
+    display: flex;
+    padding: 1rem;
+    flex-direction: row;
+    justify-content: start;
+`
+
+const Info = styled.div`
+    display: flex;
+    width: 100%;
+    justify-content: flex-end;
+`
 
 const LogOut = styled.p`
     cursor: pointer
@@ -22,15 +34,17 @@ const Navbar = props => {
 
     return (
         <>
-            <nav className="flex flex-row w-auto sticky top-0 font-semibold px-4 py-1.5 h-12 text-gray-500 bg-white">
-                <Link className="px-6" to="/">Home</Link>
-                {status === 'hrd' ? <Link className="px-6" to="/postjob">Post Job</Link> : null}
-                {auth ? <Link className="px-6" to="/jobs">List Job</Link> : null}
-                {!auth ? <Link className="px-6" to="/register">Register</Link> : null}
-                {!auth ? <Link className="px-6" to="/login">Login</Link> : <Link to="/profile">Profile</Link>}
-                <Link className="px-6" to="/about">about</Link>
-                {auth ? <LogOut onClick={clickEvent}>Logout</LogOut> : <Redirect to="/"/>}
-            </nav>
+            <Nav>
+                <Link className="px-2" to="/">Home</Link>
+                <Info>
+                    {status === 'hrd' ? <Link className="px-2" to="/postjob">Post Job</Link> : null}
+                    {auth ? <Link className="px-2" to="/jobs">List Job</Link> : null}
+                    {!auth ? <Link className="px-2" to="/register">Register</Link> : null}
+                    {!auth ? <Link className="px-2" to="/login">Login</Link> : <Link className="px-2" to="/profile">Profile</Link>}
+                    <Link className="px-2" to="/about">about</Link>
+                    {auth ? <Link className="px-2" onClick={clickEvent}>Logout</Link> : <Redirect to="/"/>}
+                </Info>
+            </Nav>
         </>
     )
 }
