@@ -1,18 +1,18 @@
 import React from "react";
 import PostForm from "../components/PostForm";
-import styled from 'styled-components';
+import style from 'styled-components';
 
-const Body = styled.body`
-   height:
+const Body = style.div`
+height:36rem
 `
 
 const PageForm = () => {
   return (
-    <div className="bg-gray-100 h-auto pt-24" >
+    <Body className="bg-gray-100 pt-12" >
       <span>
         <PostForm />
       </span>
-    </div>
+    </Body>
   );
 };
 export default PageForm
