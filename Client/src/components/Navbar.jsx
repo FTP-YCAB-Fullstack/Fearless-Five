@@ -42,7 +42,7 @@ const Navbar = props => {
                     {!auth ? <Link className="px-2" to="/register">Register</Link> : null}
                     {!auth ? <Link className="px-2" to="/login">Login</Link> : <Link className="px-2" to="/profile">Profile</Link>}
                     <Link className="px-2" to="/about">about</Link>
-                    {auth ? <Link className="px-2" onClick={clickEvent}>Logout</Link> : <Redirect to="/"/>}
+                    {auth ? <LogOut className="px-2" onClick={clickEvent}>Logout</LogOut> : <Redirect to="/"/>}
                 </Info>
             </Nav>
         </>
