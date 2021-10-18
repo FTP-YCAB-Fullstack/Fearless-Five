@@ -3,34 +3,28 @@ import React, { useState } from "react";
 import { useSelector } from "react-redux";
 import Swal from "./../utils/Swal";
 import style from "styled-components";
+import { useHistory } from "react-router";
 
+const BodyList = style.div`
+    width:60rem
+  `;
+  const FormList = style.form`
+    width:50rem
+  `;
+  
 const PostForm = () => {
+  const history = useHistory()
   const companyName = useSelector((state) => state.user.workNow);
   // const [companyId, setCompanyId] = useState("");
   const [role, setRole] = useState("");
   const [job_description, setJob_description] = useState("");
   const [requirements, setRequirements] = useState("");
   const hrdEmail = useSelector((state) => state.user.email);
-  // const [hrdId, setHrdId] = useState("");
   const [rangeSalary, setRangeSalary] = useState("");
   const [responsibility, setResponesibilty] = useState("");
   const [benefit, setBenefit] = useState("");
   const [mandatorySkills, setMandatorySkills] = useState("");
   const [goodToHave, setGoodToHave] = useState("");
-
-  const Post = async (data) => {
-    try {
-      const token = localStorage.getItem("token");
-      let response = await axios.post("http://localhost:3001/vacancies", data, {
-        headers: {
-          token,
-        },
-      });
-      Swal("success", "New job posted!");
-    } catch (error) {
-      console.log(error);
-    }
-  };
 
   const handleSumbit = (e) => {
     e.preventDefault();
@@ -57,13 +51,21 @@ const PostForm = () => {
     Post(PostJob);
   };
 
-  const BodyList = style.div`
-    width:60rem
-  `;
-  const FormList = style.form`
-    width:50rem
-  `;
-  
+  async function Post (data) {
+    try {
+      const token = localStorage.getItem("token");
+      let response = await axios.post("http://localhost:3001/vacancies", data, {
+        headers: {
+          token,
+        },
+      });
+      Swal("success", "New job posted!");
+      history.push(`/jobs/${response.data._id}`,data)
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
   return (
     <div className="flex justify-center items-center">
       <BodyList>
@@ -80,7 +82,7 @@ const PostForm = () => {
               <span className="pb-1 font-bold text-gray-700">Role</span>
               <input
                 className="outline-none border-2 border-gray-300 h-8 rounded-md pl-2 "
-                value={role}
+                // value={role}
                 onChange={(e) => setRole(e.target.value)}
                 type="text"
               />
@@ -136,7 +138,7 @@ const PostForm = () => {
               <br className="pt-2" />
               <div className="flex justify-center">
               <button className="bg-blue-500 text-white h-10 rounded-md w-96">
-                Create account
+                Create 
               </button>
               </div>
             </FormList>

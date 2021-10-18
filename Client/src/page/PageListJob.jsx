@@ -30,7 +30,7 @@ const PageListJob = () => {
 
   return (
     <div className="bg-gray-100">
-      <form className="flex pb-5 mt-14 flex-col items-center bg-gray-100">
+      <form className="flex pb-5 flex-col items-center bg-gray-100">
         <span className="font-bold pb-4">Search job</span>
         <input
           value={filter}
