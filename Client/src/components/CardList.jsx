@@ -19,8 +19,8 @@ const CardList = (props) => {
           <div className="h-20 flex pl-4 pt-1">
             <div className=" w-20">
               <img
-                src="https://lh5.googleusercontent.com/proxy/us1i-yo0mMSbEFwgoN38yomT9-fKaHk_kkv4jmoCiSJliwhyPeyVgXLVcjUuPS9WcZX-oEZdylv6t3uETWd4MqUpl3sveZLUVg3xdtA9MQT00rI=w1200-h630-p-k-no-nu"
-                alt=""
+                src="https://lh3.googleusercontent.com/proxy/QFRHtB-VRxhCfrlEARlw464nk2DFRsir8e5ykKicGcw7r_gxTG3nLl8uA2awcQ1O4mGnqDDTNxipysDHmoprMuZ7LCK1DpB8C1i9X8E_84hHJmdZ3PBR380dIrti9zQvDEjNf9BA"
+                alt="noimg"
               />
             </div>
             <div className="w-auto">
