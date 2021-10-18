@@ -3,7 +3,9 @@ import Profile from './../components/Profile'
 
 const PageProfile = props => {
     return (
-        <Profile />
+        <div className="bg-gray-100">
+            <Profile />
+        </div>
     )
 }
 

@@ -34,7 +34,7 @@ const Navbar = props => {
 
     return (
         <>
-            <Nav>
+            <Nav className="bg-gray-100">
                 <Link className="px-2" to="/">Home</Link>
                 <Info>
                     {status === 'hrd' ? <Link className="px-2" to="/postjob">Post Job</Link> : null}
