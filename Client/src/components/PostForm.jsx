@@ -1,15 +1,16 @@
 import axios from "axios";
 import React, { useState } from "react";
-import {useSelector} from 'react-redux'
-import Swal from './../utils/Swal'
+import { useSelector } from "react-redux";
+import Swal from "./../utils/Swal";
+import style from "styled-components";
 
 const PostForm = () => {
-  const companyName = useSelector(state => state.user.workNow);
+  const companyName = useSelector((state) => state.user.workNow);
   // const [companyId, setCompanyId] = useState("");
   const [role, setRole] = useState("");
   const [job_description, setJob_description] = useState("");
   const [requirements, setRequirements] = useState("");
-  const hrdEmail = useSelector(state => state.user.email);
+  const hrdEmail = useSelector((state) => state.user.email);
   // const [hrdId, setHrdId] = useState("");
   const [rangeSalary, setRangeSalary] = useState("");
   const [responsibility, setResponesibilty] = useState("");
@@ -25,7 +26,7 @@ const PostForm = () => {
           token,
         },
       });
-      Swal('success', 'New job posted!')
+      Swal("success", "New job posted!");
     } catch (error) {
       console.log(error);
     }
@@ -56,82 +57,92 @@ const PostForm = () => {
     Post(PostJob);
   };
 
+  const BodyList = style.div`
+    width:60rem
+  `;
+  const FormList = style.form`
+    width:50rem
+  `;
+  
   return (
-    <div className=" w-screen flex justify-center items-center pb-11">
-      <div className="w-96">
-        <div className="flex justify-center pb-5">
-          <span className="text-3xl font-bold">Post Job</span>
-        </div>
-        <div className="flex justify-center bg-gray-50 h-auto py-2 pl-7 pr-2 filter drop-shadow-lg w-96">
+    <div className="flex justify-center items-center">
+      <BodyList>
+        {/* <div className="flex justify-center pb-2">
+         
+        </div> */}
+        <BodyList className="flex justify-center flex-col items-center rounded-md bg-gray-50 h-auto pt-5 pb-6 pl-7 pr-2 filter drop-shadow-lg">
+        <span className="text-3xl font-bold text-center pb-16">Post Job</span>
           <div className=" overflow-y-scroll h-96 ">
-            <form
+            <FormList
               onSubmit={handleSumbit}
-              className="flex flex-col justify-around h-auto w-80 pr-2"
+              className="flex flex-col justify-around h-auto pr-2"
             >
-              <span className="pb-1">Role</span>
+              <span className="pb-1 font-bold text-gray-700">Role</span>
               <input
-               className="outline-none border-2 border-gray-400 h-8 rounded-md "
+                className="outline-none border-2 border-gray-300 h-8 rounded-md pl-2 "
                 value={role}
                 onChange={(e) => setRole(e.target.value)}
                 type="text"
               />
-              <span className="pb-1 pt-2">Job Description</span>
+              <span className="pb-1 pt-2 font-bold text-gray-700">Job Description</span>
               <textarea
-               className="outline-none border-2 border-gray-400 h-20 rounded-md "
+                className="outline-none border-2 border-gray-300 h-20 rounded-md pl-2"
                 value={job_description}
                 onChange={(e) => setJob_description(e.target.value)}
                 type="text"
               />
-              <span className="pb-1 pt-2"> Requirements </span>
+              <span className="pb-1 pt-2  font-bold text-gray-700"> Requirements </span>
               <textarea
-               className="outline-none border-2 border-gray-400 h-20 rounded-md "
+                className="outline-none border-2 border-gray-300 h-20 rounded-md pl-2 "
                 value={requirements}
                 onChange={(e) => setRequirements(e.target.value)}
                 type="text"
               />
-              <span className="pb-1 pt-2"> Range Salary </span>
+              <span className="pb-1 pt-2 font-bold text-gray-700"> Range Salary </span>
               <input
                 type="number"
-                className="outline-none border-2 border-gray-400 h-8 rounded-md "
+                className="outline-none border-2 border-gray-300 h-8 rounded-md pl-2 "
                 value={rangeSalary}
                 onChange={(e) => setRangeSalary(e.target.value)}
               />
-              <span className="pb-1 pt-2"> Responsibility </span>
+              <span className="pb-1 pt-2 font-bold text-gray-700"> Responsibility </span>
               <textarea
-               className="outline-none border-2 border-gray-400 h-20 rounded-md "
+                className="outline-none border-2 border-gray-300 h-20 rounded-md pl-2 "
                 value={responsibility}
                 onChange={(e) => setResponesibilty(e.target.value)}
                 type="text"
               />
-              <span className="pb-1 pt-2"> Benefit </span>
+              <span className="pb-1 pt-2 font-bold text-gray-700"> Benefit </span>
               <input
-               className="outline-none border-2 border-gray-400 h-8 rounded-md "
+                className="outline-none border-2 border-gray-300 h-8 rounded-md pl-2 "
                 value={benefit}
                 onChange={(e) => setBenefit(e.target.value)}
                 type="text"
               />
-              <span className="pb-1 pt-2"> Mandatory Skills </span>
+              <span className="pb-1 pt-2 font-bold text-gray-700"> Mandatory Skills </span>
               <input
-               className="outline-none border-2 border-gray-400 h-8 rounded-md "
+                className="outline-none border-2 border-gray-300 h-8 rounded-md pl-2 "
                 value={mandatorySkills}
                 onChange={(e) => setMandatorySkills(e.target.value)}
                 type="text"
               />
-              <span className="pb-1 pt-2"> Good To Have Skills </span>
+              <span className="pb-1 pt-2 font-bold text-gray-700"> Good To Have Skills </span>
               <input
-               className="outline-none border-2 border-gray-400 h-8 rounded-md "
+                className="outline-none border-2 border-gray-300 h-8 rounded-md pl-2"
                 value={goodToHave}
                 onChange={(e) => setGoodToHave(e.target.value)}
                 type="text"
               />
               <br className="pt-2" />
-             <button className="bg-blue-500 text-white h-10 rounded-md">
-              Create account
-            </button>
-            </form>
+              <div className="flex justify-center">
+              <button className="bg-blue-500 text-white h-10 rounded-md w-96">
+                Create account
+              </button>
+              </div>
+            </FormList>
           </div>
-        </div>
-      </div>
+        </BodyList>
+      </BodyList>
     </div>
   );
 };
