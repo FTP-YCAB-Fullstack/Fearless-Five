@@ -103,7 +103,12 @@ const ModalInput = props => {
 
     return (
         <div>
-            <div className="flex flex-col w-full justify-center items-center">
+            <div className="flex justify-end pb-5 pt-2">
+                <div>
+                    <button className="bg-red-600 h-6 w-6 rounded-full text-md font-bold text-white" onClick={}>X</button>
+                </div>
+            </div>
+            <div className="flex flex-col w-full justify-center items-center pl-4">
                 <div className="h-14 w-full bg-blue-500 flex justify-center items-center font-bold text-xl text-white rounded-lg top-0">
                     <p>Edit your profile</p>
                 </div>

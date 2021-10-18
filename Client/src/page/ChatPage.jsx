@@ -1,8 +1,20 @@
 import React, {useState, useEffect} from 'react'
 import { useSelector } from 'react-redux';
 import io from 'socket.io-client'
+import styled from 'styled-components'
+
+import Chat from './../components/Chat'
 
 const socket = io.connect('http://localhost:3001');
+
+const ChatList = styled.div`
+    width: 80%;
+    margin: auto;
+`
+
+const Wrapper = styled.div`
+    margin: 1rem 0 0 0;
+`
 
 const ChatPage = props => {
     const user = useSelector(state => state.user);
@@ -45,17 +57,20 @@ const ChatPage = props => {
     }
 
     return (
-        <React.Fragment>
+        <Wrapper>
+            <p className="text-center my-4 font-bold text-2xl">Chat Page</p>
             {list.map((el, i) => {
                 return (
-                    <div style={{backgroundColor: el.sender === user.email ? 'blue' : 'green', color: 'white'}} key={i}>
-                        <p>{el.sender}:{el.message}</p>
-                    </div>
+                    <ChatList>
+                        <Chat {...user} {...el}/>
+                    </ChatList>
                 )
             })}
-            <textarea className="border-2" onChange={messageHandler} />
-            <button onClick={sendMessage}>Send</button>
-        </React.Fragment>
+            <div className="flex justify-center my-8">
+                <textarea className="w-64 h-20 self-center border-2" onChange={messageHandler} />
+                <button className="bg-blue-300 w-8" onClick={sendMessage}>+</button>
+            </div>
+        </Wrapper>
     )
 }
 

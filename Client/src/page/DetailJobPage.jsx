@@ -71,72 +71,107 @@ const DetailJobPage = (props) => {
   }, [yourData]);
 
   return (
-    <div>
-      <div className=" flex pl-20 pt-10 items-center pb-12 ">
-        <div className="h-36 w-36 flex items-center justify-center">
-          <img
+    <div className="bg-gray-100">
+      <div className=" flex px-16 pt-10 items-center mb-6 ">
+        <div className="h-36 w-36 flex items-center justify-center mb-3">
+          <img className="w-24 h-24 sm:w-36 sm:h-36"
             src="https://lh5.googleusercontent.com/proxy/us1i-yo0mMSbEFwgoN38yomT9-fKaHk_kkv4jmoCiSJliwhyPeyVgXLVcjUuPS9WcZX-oEZdylv6t3uETWd4MqUpl3sveZLUVg3xdtA9MQT00rI=w1200-h630-p-k-no-nu"
             alt=""
             srcset=""
           />
         </div>
         <div className="flex pl-8">
-          <div className="pb-10 w-auto">
-            <p className="text-3xl font-bold">{data.companyName}</p>
-            <p>Rp. {data.rangeSalary.toLocaleString().replaceAll(",", ".")}</p>
-            <p>Email: {data.hrdEmail}</p>
+          <div className="pb-8 w-auto">
+            <p className="text-base sm:text-4xl font-bold">{data.companyName}</p>
+            <p className="text-base sm:text-lg">{data.role}</p>
+            <p className="text-base sm:text-lg">Rp. {data.rangeSalary.toLocaleString().replaceAll(",", ".")}</p>
+            <p className="text-base sm:text-lg">{data.hrdEmail}</p>
           </div>
         </div>
       </div>
-      <div className="border-2 border-gray-300"></div>
-      <h2>{data.status === "open" ? "OPEN" : "CLOSED"}</h2>
 
-      <p>Benefit</p>
-      <ul>
-        {data.benefit.map((el) => (
-          <li>{el}</li>
-        ))}
-      </ul>
-      <h1 className="text-lg font-bold">Requirement</h1>
-      <ul>
-        {data.requirements.map((el) => (
-          <li>{el}</li>
-        ))}
-      </ul>
-      <h1 className="text-lg font-bold">Responsibility</h1>
-      <ul>
-        {data.responsibility.map((el) => (
-          <li>{el}</li>
-        ))}
-      </ul>
-      <h1 className="text-lg font-bold">Mandatory Skills</h1>
-      <ul>
-        {data.mandatorySkills.map((el) => (
-          <li>{el}</li>
-        ))}
-      </ul>
-      <h1 className="text-lg font-bold">Good To Have Skills</h1>
-      <ul>
-        {data.goodToHave.map((el) => (
-          <li>{el}</li>
-        ))}
-      </ul>
-      {state.cv ? (
-        <button
-          disabled={state.role === "hrd" || canApply === false ? true : false}
-          className="bg-red-300"
-          onClick={apply}
-        >
-          {state.role === "hrd" || canApply === false
-            ? "Cannot Apply"
-            : "Apply"}
-        </button>
-      ) : (
-        <p>You cannot apply before you upload your cv</p>
-      )}
-      {data.hrdEmail === state.email ? (
-        <button onClick={close}>Close Job</button>
-      ) : null}
+      <div className="flex justify-center">
+        <div className="border-b-4 border-gray-400 w-11/12 mb-8"></div>
+      </div>
+
+      
+        <div className="px-10 sm:px-20">
+          <h2 className="text-xl font-bold">{data.status === "open" ? "OPEN" : "CLOSED"}</h2>
+
+          <p className="mt-4 font-bold text-md">DESCRIPTION: <p className="font-normal">{data.job_description}</p></p>
+
+          <div className="mt-4">
+            <h1 className="text-md font-bold">BENEFIT:</h1>
+            <div className="ml-7">
+              <ul>
+                {data.benefit.map((el) => (
+                  <li className="list-disc font-normal">{el}</li>
+                ))}
+              </ul>
+            </div>
+          </div>
+          
+          <div className="mt-4">
+            <h1 className="text-md font-bold">REQUIREMENT:</h1>
+            <div className="ml-7">
+              <ul>
+                {data.requirements.map((el) => (
+                  <li className="list-disc font-normal">{el}</li>
+                ))}
+              </ul>
+            </div>
+          </div>
+
+          <div className="mt-4">
+            <h1 className="text-md font-bold">RESPONSIBILITY:</h1>
+            <div className="ml-7">
+              <ul>
+                {data.responsibility.map((el) => (
+                  <li className="list-disc font-normal">{el}</li>
+                ))}
+              </ul>
+            </div>
+          </div>
+          
+          <div className="mt-4">
+            <h1 className="text-md font-bold">MANDATORY SKILLS:</h1>
+            <div className="ml-7">
+              <ul>
+                {data.mandatorySkills.map((el) => (
+                  <li className="list-disc font-normal">{el}</li>
+                ))}
+              </ul>
+            </div>
+          </div>
+          
+          <div className="mt-4">
+            <h1 className="text-md font-bold">GOOD TO HAVE SKILLS:</h1>
+            <div className="ml-7">
+              <ul>
+                {data.goodToHave.map((el) => (
+                  <li className="list-disc font-normal">{el}</li>
+                ))}
+              </ul>
+            </div>
+          </div>
+          {state.cv ? (
+            <button
+              disabled={state.role === "hrd" || canApply === false ? true : false}
+              className="bg-red-500 mb-20 rounded-lg p-2 font-bold text-white mt-4 hover:bg-red-700"
+              onClick={apply}
+            >
+              {state.role === "hrd" || canApply === false
+                ? "Cannot Apply"
+                : "Apply"}
+            </button>
+          ) : (
+            <p>You cannot apply before you upload your cv</p>
+          )}
+          {data.hrdEmail === state.email ? (
+            <button onClick={close}>Close Job</button>
+          ) : null}
+      </div>
+      
     </div>
   );
 };

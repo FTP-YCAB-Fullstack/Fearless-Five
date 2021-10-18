@@ -60,7 +60,7 @@ const PostForm = () => {
         },
       });
       Swal("success", "New job posted!");
-      history.push(`/jobs/${response.data._id}`,data)
+      history.push(`/profile`,data)
     } catch (error) {
       console.log(error);
     }
