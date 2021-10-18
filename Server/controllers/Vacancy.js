@@ -12,7 +12,7 @@ class VacancyController {
             } else if (req.query.hrdEmail) {
                 data = await Vacancy.find({hrdEmail: req.query.hrdEmail});
             } else {
-                data = await Vacancy.find()
+                data = await Vacancy.find().sort('-createdAt')
             }
 
             let theMuse = await axios.get('https://www.themuse.com/api/public/jobs?location=Flexible%20%2F%20Remote&page=2');

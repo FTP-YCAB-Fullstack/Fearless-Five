@@ -4,6 +4,14 @@ import { useSelector } from "react-redux";
 import Swal from "./../utils/Swal";
 import style from "styled-components";
 
+const BodyList = style.div`
+width:60rem
+`;
+const FormList = style.form`
+width:50rem
+`;
+
+
 const PostForm = () => {
   const companyName = useSelector((state) => state.user.workNow);
   // const [companyId, setCompanyId] = useState("");
@@ -57,13 +65,7 @@ const PostForm = () => {
     Post(PostJob);
   };
 
-  const BodyList = style.div`
-    width:60rem
-  `;
-  const FormList = style.form`
-    width:50rem
-  `;
-  
+ 
   return (
     <div className="flex justify-center items-center">
       <BodyList>
