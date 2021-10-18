@@ -1,6 +1,7 @@
 import React, {useState, useEffect } from "react";
 import axios from "axios";
 import { useSelector, useDispatch } from "react-redux";
+import Modal from 'react-modal';
 
 import ModalInput from './ModalInput'
 import CardJob from './CardJob'
@@ -9,7 +10,8 @@ import CardList from './CardList'
 const Profile = (props) => {
   const dispatch = useDispatch();
   const user = useSelector((state) => state.user);
-  const [modal, setModal] = useState(false);
+  // const [modal, setModal] = useState(false);
+  const [modalIsOpen, setModalIsOpen] = useState(false);
 
   const [lamaran, setLamaran] = useState([]);
   const [job, setJob] = useState([]);
@@ -80,7 +82,7 @@ const Profile = (props) => {
                   </div>
 
                   <div className="ml-6">
-                    <button className="font-light text-blue-500 text-xl" onClick={() => setModal(true)}>Edit profile</button>
+                    <button className="font-light text-blue-500 text-xl" onClick={() => setModalIsOpen(true)}>Edit profile</button>
                   </div>
                 </div>
                 
@@ -137,11 +139,11 @@ const Profile = (props) => {
       </div>
       )}
       {
-        modal ? 
-        <div>
-          <h1 className="text-lg font-bold">Form Edit</h1>
-          <ModalInput />
-        </div> :
+        modalIsOpen ?
+          <Modal style={{overlay: {}, content: {borderRadius: '10px', padding: '0px', border: '2px solid #EDEDED', left: '15%', right: '15%'}}} isOpen={modalIsOpen} onRequestClose={() => setModalIsOpen(false)} closeTimeoutMS={2000} preventScroll={false}>
+            <ModalInput/>
+          </Modal>
+          :
         null
       }
       {lamaran.map((el, i) => <CardJob getLamaran={getLamaran} email={user.email} key={i} userRole={user.role} {...el}/>)}
