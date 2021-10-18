@@ -40,7 +40,7 @@ const PageListJob = () => {
           onChange={(e) => setFilter(e.target.value)}
         />
       </form>
-      <div className="flex flex-wrap w-full h-full justify-around mt-10 overflow-y-scroll bg-gray-100 ">
+      <div className="flex flex-wrap w-full h-full justify-center gap-x-6 mt-10 overflow-y-scroll bg-gray-100 ">
           {jobs.map((el, index) => (
             // <p>{el.role}</p>
             <CardList {...el} key={index} />

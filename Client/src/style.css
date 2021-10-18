@@ -25,11 +25,6 @@ html {
   -moz-tab-size: 4;
   tab-size: 4;
 }
-
-body {
-  background-color: #f7fafc
-}
-
 /**
 1. Correct the line height in all browsers.
 2. Prevent adjustments of font size after orientation changes in iOS.
