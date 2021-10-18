@@ -70,7 +70,7 @@ const Profile = (props) => {
     <React.Fragment>
       {!user.name ? null : (
         <div>
-        <div className="mt-12 ml-16 mb-8 flex flex-row">
+        <div className="pt-12 ml-16 mb-8 flex flex-row">
               <div>
                 <img className="rounded-full" src={user.profile} width="160" alt="noProfile"/>
               </div>
@@ -133,7 +133,7 @@ const Profile = (props) => {
         <p>{user.nationality}</p>
         <p>{user.citizen}</p>
 
-        <div className="flex justify-center items-center mt-4">
+        <div className="flex justify-center items-center mt-4 pb-10">
           {user.cv ? <a className="font-bold bg-blue-500 text-white h-auto w-max p-2 rounded-lg" href={user.cv}>Check CV</a> : null}
         </div>
       </div>
