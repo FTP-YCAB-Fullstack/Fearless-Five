@@ -147,7 +147,7 @@ const Profile = (props) => {
         null
       }
       {lamaran.map((el, i) => <CardJob getLamaran={getLamaran} email={user.email} key={i} userRole={user.role} {...el}/>)}
-      {job.map((el, i) => <CardList key={i} {...el}/>)}
+      {/* {job.map((el, i) => <CardList key={i} {...el}/>)} */}
     </React.Fragment>
   );
 };
