@@ -1,4 +1,5 @@
 const Vacancy = require("./../models/vacancyModel");
+const axios = require('axios')
 
 class VacancyController {
     static getAll = async (req, res, next) => {
@@ -13,8 +14,28 @@ class VacancyController {
             } else {
                 data = await Vacancy.find()
             }
+
+            let theMuse = await axios.get('https://www.themuse.com/api/public/jobs?location=Flexible%20%2F%20Remote&page=2');
+            theMuse = theMuse.data.results.map(el => {
+                return {
+                    role: el.name.match(/\w+\s\w+/i)[0],
+                    companyName: el.company.name,
+                    link: el.refs.landing_page,
+                    status: 'open'
+                }
+            });
+
+            if (req.query.category) {
+                let query = new RegExp(req.query.category, 'gi')
+                theMuse = theMuse.filter(el => el.role.match(query))
+            } if (req.query.hrdEmail) {
+                theMuse = [];
+            }
+
+            res.status(200).json([...data,...theMuse])
+            // console.log(theMuse.data.results)
             
-            res.status(200).json(data)
+            // res.status(200).json(data)
         } catch(err) {
             next({code: 500, message: err.message})
         }
