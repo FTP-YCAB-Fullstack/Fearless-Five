@@ -37,12 +37,15 @@ app.use(errorHandler)
 io.on('connection', socket => {
   
   socket.on('join', room => {
+    console.log(`User join ke room ${room}`)
     socket.join(room)
     Message.find({room}).then(res => socket.emit('send_room_message', res))
   });
 
   socket.on('send', data => {
-    Message.create(data).then(res => socket.to(data.room).emit('receive', data));
+    console.log(`${data.sender} mengirim ke ${data.room}`)
+    Message.create(data);
+    socket.to(data.room).emit('receive', data)
   })
 
 })

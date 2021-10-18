@@ -15,6 +15,7 @@ const ChatPage = props => {
 
     useEffect(() => {
         async function sockets() {
+            console.log(props.location.state.room)
             await socket.emit('join', props.location.state.room);
             await socket.on('send_room_message', data => {
                 setList(state => [...state, ...data])
@@ -40,6 +41,7 @@ const ChatPage = props => {
         }
         await socket.emit('send', forServer)
         setList(state => [...state, forServer])
+        setMessage("")
     }
 
     return (

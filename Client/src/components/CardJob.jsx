@@ -63,6 +63,7 @@ const CardJob = props => {
     }
 
     const goToChat = () => {
+        // console.log(props.idPelamar._id)
         const state = {
             room: `${props.vacancyId._id}${props.idPelamar._id}`
         }

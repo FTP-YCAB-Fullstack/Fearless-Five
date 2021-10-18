@@ -8,6 +8,10 @@ const CardList = (props) => {
     history.push(`/jobs/${props._id}`, { ...props });
   };
 
+  const goToLink = () => {
+    window.open(props.link)
+  }
+
   return (
     <div className={props.status === "open" ? "" : "hidden"}>
       <div className=" pl-10 pb-10">
@@ -17,7 +21,6 @@ const CardList = (props) => {
               <img
                 src="https://lh5.googleusercontent.com/proxy/us1i-yo0mMSbEFwgoN38yomT9-fKaHk_kkv4jmoCiSJliwhyPeyVgXLVcjUuPS9WcZX-oEZdylv6t3uETWd4MqUpl3sveZLUVg3xdtA9MQT00rI=w1200-h630-p-k-no-nu"
                 alt=""
-                srcset=""
               />
             </div>
             <div className="w-auto">
@@ -35,12 +38,15 @@ const CardList = (props) => {
             <span className=" text-lg font-bold">Range Salary</span>
             <br />
             <span>
-              Rp. {props.rangeSalary.toLocaleString().replaceAll(",", ".")}
+              Rp. {props.rangeSalary ?
+              props.rangeSalary.toLocaleString().replaceAll(",", ".") :
+              '-'
+              }
             </span>
             <br />
             <span className="text-lg font-bold">Requirements</span>
             <br />
-            <span> {props.requirements[0]}</span>
+            <span> {props.requirements ? props.requirements[0] : 'Unavailable'}</span>
             <br />
             <span>
               <span className="text-lg font-bold">Job title</span>
@@ -50,7 +56,7 @@ const CardList = (props) => {
             <br />
             <div className="flex justify-center pr-5 pt-4">
               <button
-                onClick={onClickHandler}
+                onClick={!props.link ? onClickHandler : goToLink}
                 className="bg-blue-500 text-white h-8 rounded-md w-20"
               >
                 Apply
