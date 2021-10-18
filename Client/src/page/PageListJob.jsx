@@ -24,7 +24,9 @@ const PageListJob = () => {
       }
     })
     .then(res => setJobs(res.data))
-  }, [filter])
+  }, [filter]);
+
+  console.log(jobs)
 
   return (
     <div className="bg-gray-100">
@@ -40,6 +42,7 @@ const PageListJob = () => {
       </form>
       <div className="flex flex-wrap w-auto h-96 justify-start mt-10 overflow-y-scroll bg-gray-100 ">
           {jobs.map((el, index) => (
+            // <p>{el.role}</p>
             <CardList {...el} key={index} />
           ))}
       </div>
