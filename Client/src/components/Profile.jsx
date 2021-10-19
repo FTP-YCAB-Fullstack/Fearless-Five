@@ -5,12 +5,10 @@ import Modal from 'react-modal';
 
 import ModalInput from './ModalInput'
 import CardJob from './CardJob'
-import CardList from './CardList'
 
 const Profile = (props) => {
   const dispatch = useDispatch();
   const user = useSelector((state) => state.user);
-  // const [modal, setModal] = useState(false);
   const [modalIsOpen, setModalIsOpen] = useState(false);
 
   const [lamaran, setLamaran] = useState([]);
@@ -47,7 +45,6 @@ const Profile = (props) => {
         }
       });
       setJob(data.data)
-      // setJob(data)
     } catch (err) {
     }
   }

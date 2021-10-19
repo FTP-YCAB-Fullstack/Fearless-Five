@@ -3,11 +3,27 @@
 @tailwind utilities;
 
 .chat_s {
-    width: 20rem;
+  width: 20rem;
 }
 
 @media (max-width: 430px) {
-    .chat_s {
-        width: 100%;
-    }
+  .chat_s {
+    width: 100%;
+  }
+}
+
+.card {
+  width: 50rem;
+}
+
+@media (max-width: 1024px) {
+  .card {
+    width: 30rem;
+  }
+}
+
+@media (max-width: 640px) {
+  .card {
+    width:20rem;
+  }
 }
