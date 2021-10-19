@@ -4,15 +4,7 @@ import { Link } from "react-router-dom";
 import swal from "sweetalert2";
 import { useDispatch } from "react-redux";
 import { useHistory } from "react-router-dom";
-import style from "styled-components";
-
-const BodyList = style.div`
-    width:50rem
-  `;
-
-const Text = style.h1`
-   padding-left:12.5rem
-  `;
+import './../css/style.css'
 
 const Regis = () => {
   const history = useHistory();
@@ -75,16 +67,16 @@ const Regis = () => {
 
   return (
     <div className="h-full pt-10 w-screen flex justify-center items-center">
-      <BodyList className=" bg-gray-50 h-auto py-3 pl-2 filter drop-shadow-lg">
+      <div className=" card sm:bg-gray-50 h-auto py-3 pl-2 sm:filter sm:drop-shadow-lg">
         <div>
           <span className="text-4xl flex justify-center h-20">logo</span>
         </div>
         <div>
-          <Text className="text-lg font-bold h-20">Register</Text>
+          <h1 className="pl-10 sm:pl-12 lg:pl-52 text-lg font-bold h-20">Register</h1>
         </div>
         <div className="flex flex-col items-center">
           <form
-            className="flex flex-col h-80 w-96 justify-between"
+            className="flex flex-col h-80 w-60 sm:w-96 justify-between"
             onSubmit={handleSumbit}
           >
             <span className="h-4">name</span>
@@ -149,7 +141,7 @@ const Regis = () => {
             </div>
           </form>
         </div>
-      </BodyList>
+      </div>
     </div>
   );
 };

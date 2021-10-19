@@ -36,7 +36,7 @@ const PageListJob = () => {
           value={filter}
           type="text"
           placeholder="search"
-          className="outline-none border-2 border-gray-400 h-8 w-72 rounded-md"
+          className="outline-none border-2 border-gray-200 h-8 w-72 pl-2 rounded-sm filter drop-shadow-sm"
           onChange={(e) => setFilter(e.target.value)}
         />
       </form>

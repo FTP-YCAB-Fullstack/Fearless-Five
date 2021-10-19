@@ -2,20 +2,12 @@ import axios from "axios";
 import React, { useState } from "react";
 import { useSelector } from "react-redux";
 import Swal from "./../utils/Swal";
-import style from "styled-components";
 import { useHistory } from "react-router";
-
-const BodyList = style.div`
-    width:60rem
-  `;
-  const FormList = style.form`
-    width:50rem
-  `;
+import './../css/style.css'
   
 const PostForm = () => {
   const history = useHistory()
   const companyName = useSelector((state) => state.user.workNow);
-  // const [companyId, setCompanyId] = useState("");
   const [role, setRole] = useState("");
   const [job_description, setJob_description] = useState("");
   const [requirements, setRequirements] = useState("");
@@ -68,21 +60,18 @@ const PostForm = () => {
 
   return (
     <div className="flex justify-center items-center">
-      <BodyList>
-        {/* <div className="flex justify-center pb-2">
-         
-        </div> */}
-        <BodyList className="flex justify-center flex-col items-center rounded-md bg-gray-50 h-auto pt-5 pb-6 pl-7 pr-2 filter drop-shadow-lg">
+      <div>
+        <div className=" card flex justify-center flex-col items-center rounded-md sm:bg-gray-50 h-auto pt-5 pb-6 pl-7 pr-2 sm:filter sm:drop-shadow-lg">
         <span className="text-3xl font-bold text-center pb-16">Post Job</span>
           <div className=" overflow-y-scroll h-96 ">
-            <FormList
+            <form
               onSubmit={handleSumbit}
-              className="flex flex-col justify-around h-auto pr-2"
+              className=" form flex flex-col justify-around h-auto pr-2"
             >
               <span className="pb-1 font-bold text-gray-700">Role</span>
               <input
                 className="outline-none border-2 border-gray-300 h-8 rounded-md pl-2 "
-                // value={role}
+                value={role}
                 onChange={(e) => setRole(e.target.value)}
                 type="text"
               />
@@ -141,10 +130,10 @@ const PostForm = () => {
                 Create 
               </button>
               </div>
-            </FormList>
+            </form>
           </div>
-        </BodyList>
-      </BodyList>
+        </div>
+      </div>
     </div>
   );
 };

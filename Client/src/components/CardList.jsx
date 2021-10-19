@@ -46,7 +46,7 @@ const CardList = (props) => {
             <br />
             <span className="text-lg font-bold">Requirements</span>
             <br />
-            <span> {props.requirements ? props.requirements[0] : 'Unavailable'}</span>
+            <span> {props.requirements ? `${props.requirements[0].slice(0,25)}...` : 'Unavailable'}</span>
             <br />
             <span>
               <span className="text-lg font-bold">Job title</span>
