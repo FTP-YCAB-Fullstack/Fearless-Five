@@ -3,7 +3,7 @@ import About from "../components/About";
 
 const PageAbout = () => {
   return (
-    <div className="bg-gray-100 h-auto pt-24 w-auto">
+    <div className="bg-gray-100 h-auto pt-16 w-auto">
       <About />
     </div>
   );
