@@ -48,28 +48,28 @@ const Navbar = (props) => {
               Dropdown
             </a>
             <div className="dropdown-menu min-w-full" aria-labelledby="navbarDropdown">
-              <a className="dropdown-item" href="#">
+              <a className="dropdown-item p-0" href="#">
                 {status === "hrd" ? (
                   <Link className="px-2" to="/postjob">
                     Post Job
                   </Link>
                 ) : null}
               </a>
-              <a className="dropdown-item" href="#">
+              <a className="dropdown-item p-0" href="#">
                 {auth ? (
                   <Link className="px-2" to="/jobs">
                     List Job
                   </Link>
                 ) : null}
               </a>
-              <a className="dropdown-item" href="#">
+              <a className="dropdown-item p-0" href="#">
                 {!auth ? (
                   <Link className="px-2" to="/register">
                     Register
                   </Link>
                 ) : null}
               </a>
-              <a className="dropdown-item" href="#">
+              <a className="dropdown-item p-0" href="#">
                 {!auth ? (
                   <Link className="px-2" to="/login">
                     Login
@@ -80,12 +80,12 @@ const Navbar = (props) => {
                   </Link>
                 )}
               </a>
-              <a className="dropdown-item" href="#">
+              <a className="dropdown-item p-0" href="#">
                 <Link className="px-2" to="/about">
                   about
                 </Link>
               </a>
-              <a className="dropdown-item" href="#">
+              <a className="dropdown-item p-0" href="#">
                 {auth ? (
                   <LogOut className="px-2" onClick={clickEvent}>
                     Logout
