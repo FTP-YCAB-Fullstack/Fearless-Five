@@ -45,7 +45,7 @@ const Navbar = (props) => {
               aria-haspopup="true"
               aria-expanded="false"
             >
-              Dropdown
+                Menu
             </a>
             <div className="dropdown-menu min-w-full" aria-labelledby="navbarDropdown">
               <a className="dropdown-item p-0" href="#">
