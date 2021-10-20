@@ -61,7 +61,7 @@ const ChatPage = props => {
             <p className="text-center my-4 font-bold text-2xl">Chat Page</p>
             {list.map((el, i) => {
                 return (
-                    <ChatList>
+                    <ChatList key={i}>
                         <Chat {...user} {...el}/>
                     </ChatList>
                 )
