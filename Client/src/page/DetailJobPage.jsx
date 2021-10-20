@@ -76,9 +76,8 @@ const DetailJobPage = (props) => {
       <div className=" flex px-16 pt-10 items-center mb-6 ">
         <div className="h-36 w-36 flex items-center justify-center mb-3">
           <img className="w-24 h-24 sm:w-36 sm:h-36"
-            src="https://lh5.googleusercontent.com/proxy/us1i-yo0mMSbEFwgoN38yomT9-fKaHk_kkv4jmoCiSJliwhyPeyVgXLVcjUuPS9WcZX-oEZdylv6t3uETWd4MqUpl3sveZLUVg3xdtA9MQT00rI=w1200-h630-p-k-no-nu"
+            src="https://firebasestorage.googleapis.com/v0/b/uploading-file-14552.appspot.com/o/building-icon-35643.png?alt=media&token=5cd9b5df-6477-472d-a97d-f6477af8d6a9"
             alt=""
-            srcset=""
           />
         </div>
         <div className="flex pl-8">
