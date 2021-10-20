@@ -41,12 +41,13 @@ const Profile = (props) => {
 
   const getJob = async (email) => {
     try {
-      const data = await axios.get(`${process.env.SERVER}/vacancies?hrdEmail=${email}`, {
+      const data = await axios.get(`http://localhost:3001/vacancies?hrdEmail=${email}`, {
         headers: {
           token
         }
       });
       setJob(data.data);
+      console.log(data.data)
     } catch (err) {
     }
   }
@@ -64,6 +65,8 @@ const Profile = (props) => {
       getJob(user.email);
     }
   }, [user])
+
+  console.log(job)
 
   return (
     <div>
