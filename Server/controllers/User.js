@@ -18,7 +18,7 @@ class Users {
                         message: 'Error! Either email or Password Wrong'
                     })  
                 } else {
-                    const token = jwt.sign({name:exist.name, email: exist.email, role: exist.role, id: exist._id}, 'secret-key');
+                    const token = jwt.sign({name:exist.name, email: exist.email, role: exist.role, id: exist._id}, process.env.JWT_KEY);
                     res.status(200).json({
                         token
                     })

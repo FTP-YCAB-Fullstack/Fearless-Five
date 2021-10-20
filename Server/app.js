@@ -1,3 +1,5 @@
+require('dotenv').config()
+
 const express = require("express");
 const app = express();
 const mongoose = require('mongoose');
@@ -27,7 +29,7 @@ app.get("/", (req, res) => {
 });
 
 mongoose
-.connect('mongodb+srv://admin_ihsan:123@cluster0.fjyzg.mongodb.net/remotify?retryWrites=true&w=majority')
+.connect(process.env.DATABASE)
 .then(res => console.log('Connected to Db'))
 .catch(err => console.log(err))
 

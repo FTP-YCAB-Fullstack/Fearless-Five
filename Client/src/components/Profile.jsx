@@ -5,6 +5,7 @@ import Modal from 'react-modal';
 
 import ModalInput from './ModalInput'
 import CardJob from './CardJob'
+import TableApply from './TableApply'
 
 const Profile = (props) => {
   const dispatch = useDispatch();
@@ -64,7 +65,7 @@ const Profile = (props) => {
   }, [user])
 
   return (
-    <React.Fragment>
+    <div>
       {!user.name ? null : (
         <div>
           <div className="pt-12 ml-16 mb-8 flex flex-row w-full">
@@ -125,27 +126,24 @@ const Profile = (props) => {
             <p className="font-semibold sm:text-base text-sm">{user.workNow}</p>
             <div className="border-b-2 border-gray-400 mt-2 w-11/12"></div>
           </div>
-        </div>
-
-        <p>{user.nationality}</p>
-        <p>{user.citizen}</p>
-
-        <div className="flex justify-center items-center mt-4 pb-10">
-          {user.cv ? <a className="font-bold bg-blue-500 text-white h-auto w-max p-2 rounded-lg hover:bg-blue-700" href={user.cv}>Check CV</a> : null}
+          <div className="mt-4">
+            <div className="flex justify-center items-center mt-4 pb-10">
+              {user.cv ? <a className="font-bold bg-blue-500 text-white h-auto w-max p-2 rounded-lg hover:bg-blue-700" href={user.cv}>Check CV</a> : null}
+            </div>
+            {
+              modalIsOpen ?
+              <Modal style={{overlay: {}, content: {borderRadius: '10px', padding: '0px', border: '2px solid #EDEDED', left: '15%', right: '15%'}}} isOpen={modalIsOpen} onRequestClose={() => setModalIsOpen(false)} closeTimeoutMS={2000} preventScroll={false}>
+                  <ModalInput/>
+                </Modal>
+                :
+                null
+              }
+          </div>  
+          {lamaran.map((el, i) => <CardJob getLamaran={getLamaran} email={user.email} key={i} userRole={user.role} {...el}/>)}
         </div>
       </div>
       )}
-      {
-        modalIsOpen ?
-          <Modal style={{overlay: {}, content: {borderRadius: '10px', padding: '0px', border: '2px solid #EDEDED', left: '15%', right: '15%'}}} isOpen={modalIsOpen} onRequestClose={() => setModalIsOpen(false)} closeTimeoutMS={2000} preventScroll={false}>
-            <ModalInput/>
-          </Modal>
-          :
-        null
-      }
-      {lamaran.map((el, i) => <CardJob getLamaran={getLamaran} email={user.email} key={i} userRole={user.role} {...el}/>)}
-      {/* {job.map((el, i) => <CardList key={i} {...el}/>)} */}
-    </React.Fragment>
+    </div>
   );
 };
 

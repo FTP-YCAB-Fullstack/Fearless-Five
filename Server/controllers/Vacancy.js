@@ -15,7 +15,7 @@ class VacancyController {
                 data = await Vacancy.find().sort('-createdAt')
             }
 
-            let theMuse = await axios.get('https://www.themuse.com/api/public/jobs?location=Flexible%20%2F%20Remote&page=2');
+            let theMuse = await axios.get(process.env.API);
             theMuse = theMuse.data.results.map(el => {
                 return {
                     role: el.name.match(/\w+\s\w+/i)[0],
