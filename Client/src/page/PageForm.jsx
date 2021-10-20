@@ -8,7 +8,7 @@ height:36rem
 
 const PageForm = () => {
   return (
-    <Body className="bg-gray-100 pt-12" >
+    <Body className="bg-gray-100 pt-1 h-auto">
       <span>
         <PostForm />
       </span>

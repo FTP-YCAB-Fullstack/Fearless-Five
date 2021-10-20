@@ -36,21 +36,33 @@ body {
   width: 50rem;
 }
 
-.form{
-    width:34rem
+.form {
+  width: 34rem;
+}
+
+.list {
+  padding: 0;
+}
+.Button{
+  outline: white;
+  border-color:none;
 }
 
 @media (max-width: 1024px) {
   .card {
     width: 30rem;
   }
-  .form{
-      width: 20rem;
+  .form {
+    width: 20rem;
   }
 }
 
 @media (max-width: 640px) {
   .card {
-    width:20rem;
+    width: 20rem;
+    --tw-bg-opacity: 1;
+    background-color: rgba(243, 244, 246, var(--tw-bg-opacity));
+    border-color:rgba(243, 244, 246, var(--tw-bg-opacity));
+    outline:none;
   }
 }
