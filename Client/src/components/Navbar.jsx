@@ -123,7 +123,7 @@ const Navbar = (props) => {
             </Link>
           )}
           <Link className="px-2" to="/about">
-            about
+            About
           </Link>
           {auth ? (
             <LogOut className="px-2" onClick={clickEvent}>
