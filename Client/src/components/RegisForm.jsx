@@ -81,7 +81,7 @@ const Regis = () => {
           >
             <span className="h-4">name</span>
             <input
-              className="outline-none border-2 border-gray-400 h-8 rounded-md pl-2 "
+              className="outline-none border-2 border-gray-400 h-8 rounded-md pl-2 focus:outline-none focus:ring-2 focus:ring-blue-600 focus:border-transparent "
               type="text"
               value={name}
               onChange={(e) => setName(e.target.value)}
@@ -89,7 +89,7 @@ const Regis = () => {
             />
             <span className="h-4">email</span>
             <input
-              className="outline-none border-2 border-gray-400 h-8 rounded-md pl-2 "
+              className="outline-none border-2 border-gray-400 h-8 rounded-md pl-2 focus:outline-none focus:ring-2 focus:ring-blue-600 focus:border-transparent "
               type="text"
               value={email}
               onChange={(e) => setEmail(e.target.value)}
@@ -97,7 +97,7 @@ const Regis = () => {
             />
             <span className="h-4">password</span>
             <input
-              className="outline-none border-2 border-gray-400 h-8 rounded-md pl-2 "
+              className="outline-none border-2 border-gray-400 h-8 rounded-md pl-2 focus:outline-none focus:ring-2 focus:ring-blue-600 focus:border-transparent "
               type="password"
               value={password}
               onChange={(e) => setPassword(e.target.value)}
@@ -127,7 +127,7 @@ const Regis = () => {
               </div>
             </div>
             <div className="flex justify-center">
-              <button className="bg-blue-500 text-white h-10 rounded-md w-32">
+              <button className="bg-blue-500 text-white h-10 rounded-md w-32 focus:outline-none ">
               Create account
               </button>
             </div>

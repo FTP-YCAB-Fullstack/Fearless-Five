@@ -67,7 +67,7 @@ const Login = () => {
           >
             <span className="h-0">email</span>
             <input
-              className="outline-none border-2 border-gray-400 h-8 rounded-md pl-2 "
+              className="outline-none border-2 border-gray-400 h-8 rounded-md pl-2 focus:outline-none focus:ring-2 focus:ring-blue-600 focus:border-transparent "
               type="text"
               value={email}
               onChange={(e) => setEmail(e.target.value)}
@@ -75,14 +75,14 @@ const Login = () => {
             />
             <span className="h-0">password</span>
             <input
-              className="outline-none border-2 border-gray-400 h-8 rounded-md pl-2 "
+              className="outline-none border-2 border-gray-400 h-8 rounded-md pl-2 focus:outline-none focus:ring-2 focus:ring-blue-600 focus:border-transparent "
               type="password"
               value={password}
               onChange={(e) => setPassword(e.target.value)}
               required
             />
             <div className="flex items-center flex-col">
-              <button className="bg-blue-500 text-white h-10 rounded-md w-28">
+              <button className="bg-blue-500 text-white h-10 focus:outline-none rounded-md w-28">
                 Login
               </button>
             </div>
