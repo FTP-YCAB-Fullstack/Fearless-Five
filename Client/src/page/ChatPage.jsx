@@ -67,7 +67,7 @@ const ChatPage = props => {
                 )
             })}
             <div className="flex justify-center my-8">
-                <textarea className="w-64 h-20 self-center border-2" onChange={messageHandler} />
+                <textarea className="w-64 h-20 self-center border-2" onChange={messageHandler} value={message}/>
                 <button className="bg-blue-300 w-8" onClick={sendMessage}>+</button>
             </div>
         </Wrapper>

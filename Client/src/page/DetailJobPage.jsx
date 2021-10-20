@@ -50,6 +50,7 @@ const DetailJobPage = (props) => {
         },
       }
     );
+    history.push('/profile')
   };
 
   useEffect(() => {
@@ -168,7 +169,7 @@ const DetailJobPage = (props) => {
             <p>You cannot apply before you upload your cv</p>
           )}
           {data.hrdEmail === state.email ? (
-            <button onClick={close}>Close Job</button>
+            <button className="bg-red-500 mb-20 rounded-lg p-2 font-bold text-white mt-4 hover:bg-red-700" onClick={close}>Close Job</button>
           ) : null}
       </div>
       
