@@ -86,7 +86,7 @@ const CardJob = (props) => {
   };
 
   return (
-    <div className="w-screen flex justify-center h-auto pl-16 pr-28 ">
+    <div className="flex justify-center h-auto pl-16 pr-28 ">
       <Body className="bg-gray-100 py-3 flex justify-between filter drop-shadow-lg pl-5 pr-5">
         <div>
           <span className="font-bold">{props.companyName}</span>
