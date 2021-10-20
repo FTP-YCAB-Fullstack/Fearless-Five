@@ -69,7 +69,7 @@ const Regis = () => {
     <div className="h-full pt-10 w-screen flex justify-center items-center">
       <div className=" card sm:bg-gray-50 h-auto py-3 pl-2 sm:filter sm:drop-shadow-lg">
         <div>
-          <span className="text-4xl flex justify-center h-20">logo</span>
+          <span className="text-4xl flex justify-center h-20 font-bold">Remotely</span>
         </div>
         <div>
           <h1 className="pl-10 sm:pl-12 lg:pl-52 text-lg font-bold h-20">Register</h1>

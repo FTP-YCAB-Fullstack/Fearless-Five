@@ -48,6 +48,10 @@ body {
   border-color:none;
 }
 
+.card2{
+  width: 20rem;
+}
+
 @media (max-width: 1024px) {
   .card {
     width: 30rem;
@@ -64,5 +68,8 @@ body {
     background-color: rgba(243, 244, 246, var(--tw-bg-opacity));
     border-color:rgba(243, 244, 246, var(--tw-bg-opacity));
     outline:none;
+  }
+  .card2{
+    width: 15rem;
   }
 }
