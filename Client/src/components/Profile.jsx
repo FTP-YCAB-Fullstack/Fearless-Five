@@ -19,13 +19,14 @@ const Profile = (props) => {
 
   const getProfile = async (token) => {
     try {
-      const data = await axios.get("http://localhost:3001/users", {
+      const data = await axios.get(`${process.env.SERVER}/users`, {
         headers: {
           token,
         },
       });
       dispatch({ type: "ADD_LOGIN", payload: data.data });
     } catch (err) {
+      console.log(err)
     }
   };
 
@@ -40,7 +41,7 @@ const Profile = (props) => {
 
   const getJob = async (email) => {
     try {
-      const data = await axios.get(`http://localhost:3001/vacancies?hrdEmail=${email}`, {
+      const data = await axios.get(`${process.env.SERVER}/vacancies?hrdEmail=${email}`, {
         headers: {
           token
         }

@@ -5,7 +5,7 @@ import styled from 'styled-components'
 
 import Chat from './../components/Chat'
 
-const socket = io.connect('http://localhost:3001');
+const socket = io.connect('https://serene-thicket-70310.herokuapp.com');
 
 const ChatList = styled.div`
     width: 80%;
