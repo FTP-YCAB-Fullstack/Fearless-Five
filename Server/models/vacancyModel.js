@@ -46,7 +46,7 @@ const vacancySchema = new mongoose.Schema({
         type: String,
         default: "open"
     }
-});
+}, {timestamps: true});
 
 const Vacancy = mongoose.model('Vacancy', vacancySchema);
 

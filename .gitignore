@@ -1,3 +1,4 @@
 Client/src/firebase/index.js
 Client/node_modules
 Server/node_modules
+Server/.env

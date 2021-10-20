@@ -5,6 +5,7 @@ import Modal from 'react-modal';
 
 import ModalInput from './ModalInput'
 import CardJob from './CardJob'
+import TableApply from './TableApply'
 
 const Profile = (props) => {
   const dispatch = useDispatch();

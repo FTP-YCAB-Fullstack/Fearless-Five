@@ -4,7 +4,7 @@ const bcrypt = require('bcrypt')
 exports.authentication = async (req, res, next) => {
     try {
         const {token} = req.headers;
-        jwt.verify(token, 'secret-key', (err, result) => {
+        jwt.verify(token, process.env.JWT_KEY, (err, result) => {
             if (err) {
                 res.status(401).json({
                     message: 'Unauthorized'
