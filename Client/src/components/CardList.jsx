@@ -19,7 +19,7 @@ const CardList = (props) => {
           <div className="h-20 flex pl-4 pt-1">
             <div className=" w-20">
               <img
-                src="https://lh3.googleusercontent.com/proxy/QFRHtB-VRxhCfrlEARlw464nk2DFRsir8e5ykKicGcw7r_gxTG3nLl8uA2awcQ1O4mGnqDDTNxipysDHmoprMuZ7LCK1DpB8C1i9X8E_84hHJmdZ3PBR380dIrti9zQvDEjNf9BA"
+                src="https://firebasestorage.googleapis.com/v0/b/uploading-file-14552.appspot.com/o/building-icon-35643.png?alt=media&token=5cd9b5df-6477-472d-a97d-f6477af8d6a9"
                 alt="noimg"
               />
             </div>
