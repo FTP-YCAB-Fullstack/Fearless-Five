@@ -59,7 +59,7 @@ const PostForm = () => {
   };
 
   return (
-    <div className="flex justify-center items-center">
+    <div className="flex justify-center items-center sm:pt-12">
       <div>
         <div className=" card flex justify-center flex-col items-center rounded-md sm:bg-gray-50 h-auto pt-5 pb-6 pl-7 pr-2 sm:filter sm:drop-shadow-lg">
         <span className="text-3xl font-bold text-center pb-16">Post Job</span>
@@ -126,7 +126,7 @@ const PostForm = () => {
               />
               <br className="pt-2" />
               <div className="flex justify-center">
-              <button className="bg-blue-500 text-white h-10 rounded-md w-96">
+              <button className="Button bg-blue-500 text-white h-10 rounded-md utline-none w-96">
                 Create 
               </button>
               </div>
