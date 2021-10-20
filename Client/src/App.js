@@ -23,6 +23,7 @@ function App() {
   const dispatch = useDispatch();
 
   useEffect(() => {
+    console.log(process.env.SERVER)
     const token = localStorage.getItem('token');
     if (token) {
       axios.get('http://localhost:3001/users', {

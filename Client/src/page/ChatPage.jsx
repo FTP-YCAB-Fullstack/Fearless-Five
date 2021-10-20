@@ -5,7 +5,7 @@ import styled from 'styled-components'
 
 import Chat from './../components/Chat'
 
-const socket = io.connect('http://localhost:3001');
+const socket = io.connect('https://serene-thicket-70310.herokuapp.com');
 
 const ChatList = styled.div`
     width: 80%;
@@ -67,7 +67,7 @@ const ChatPage = props => {
                 )
             })}
             <div className="flex justify-center my-8">
-                <textarea className="w-64 h-20 self-center border-2" onChange={messageHandler} />
+                <textarea className="w-64 h-20 self-center border-2" onChange={messageHandler} value={message}/>
                 <button className="bg-blue-300 w-8" onClick={sendMessage}>+</button>
             </div>
         </Wrapper>

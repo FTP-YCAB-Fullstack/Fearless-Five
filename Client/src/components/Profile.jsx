@@ -5,7 +5,7 @@ import Modal from 'react-modal';
 
 import ModalInput from './ModalInput'
 import CardJob from './CardJob'
-import TableApply from './TableApply'
+import CardList from './CardList'
 
 const Profile = (props) => {
   const dispatch = useDispatch();
@@ -19,13 +19,14 @@ const Profile = (props) => {
 
   const getProfile = async (token) => {
     try {
-      const data = await axios.get("http://localhost:3001/users", {
+      const data = await axios.get(`${process.env.SERVER}/users`, {
         headers: {
           token,
         },
       });
       dispatch({ type: "ADD_LOGIN", payload: data.data });
     } catch (err) {
+      console.log(err)
     }
   };
 
@@ -45,7 +46,8 @@ const Profile = (props) => {
           token
         }
       });
-      setJob(data.data)
+      setJob(data.data);
+      console.log(data.data)
     } catch (err) {
     }
   }
@@ -63,6 +65,8 @@ const Profile = (props) => {
       getJob(user.email);
     }
   }, [user])
+
+  console.log(job)
 
   return (
     <div>
@@ -128,7 +132,7 @@ const Profile = (props) => {
           </div>
           <div className="mt-4">
             <div className="flex justify-center items-center mt-4 pb-10">
-              {user.cv ? <a className="font-bold bg-blue-500 text-white h-auto w-max p-2 rounded-lg hover:bg-blue-700" href={user.cv}>Check CV</a> : null}
+              {user.cv ? <a className="font-bold bg-blue-500 text-white h-auto w-max p-2 rounded-lg hover:bg-blue-700" href={user.cv} target="_blank">Check CV</a> : null}
             </div>
             {
               modalIsOpen ?
@@ -140,6 +144,11 @@ const Profile = (props) => {
               }
           </div>  
           {lamaran.map((el, i) => <CardJob getLamaran={getLamaran} email={user.email} key={i} userRole={user.role} {...el}/>)}
+          <div className="flex flex-wrap justify-center gap-x-6">
+            {job.map((el, i) => {
+              return <CardList {...el} key={i} />
+            })}
+          </div>
         </div>
       </div>
       )}
