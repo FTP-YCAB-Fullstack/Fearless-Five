@@ -113,39 +113,39 @@ const ModalInput = props => {
                     <p>Edit your profile</p>
                 </div>
                 <form className="w-3/6" onSubmit={submitHandler}>
-                    <p className="mt-4 text-lg font-bold">Select Profile Picture</p>
+                    <p className="mt-4 text-base sm:text-lg font-bold">Select Profile Picture</p>
                     <input onChange={profilePicHandler} accept=".jpg .jpeg .png" className="mt-0.5 w-full p-2 border-2 rounded-lg border-gray-300" type="file" autoComplete="off" placeholder="User Profile" />
 
-                    <p className="mt-2 text-lg font-bold">Name</p>
+                    <p className="mt-2 text-base sm:text-lg font-bold">Name</p>
                     <input className="mt-0.5 w-full p-2 border-2 border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-600 focus:border-transparent" onChange={changeHandler} value={profile.name} name="name" type="text" autoComplete="off" placeholder="Name"/>
 
-                    <p className="text-lg font-bold mt-2">Phone Number</p>
+                    <p className="text-base sm:text-lg font-bold mt-2">Phone Number</p>
                     <input className="mt-0.5 w-full p-2 border-2 rounded-lg border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-600 focus:border-transparent" onChange={changeHandler} value={profile.phoneNumber} name="phoneNumber" type="text" autoComplete="off" placeholder="Phone"/>
 
-                    <p className="text-lg font-bold mt-2">Job</p>
+                    <p className="text-base sm:text-lg font-bold mt-2">Job</p>
                     <input className="mt-0.5 w-full p-2 border-2 rounded-lg border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-600 focus:border-transparent" onChange={changeHandler} value={profile.jobTitle} name="jobTitle" type="text" autoComplete="off" placeholder="Job Title"/>
 
-                    <p className="text-lg font-bold mt-2">Email</p>
+                    <p className="text-base sm:text-lg font-bold mt-2">Email</p>
                     <input className="mt-0.5 w-full p-2 border-2 rounded-lg border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-600 focus:border-transparent" onChange={changeHandler} value={profile.email} name="email" type="email" autoComplete="off" placeholder="Email"/>
 
-                    <p className="text-lg font-bold mt-2">Location</p>
+                    <p className="text-base sm:text-lg font-bold mt-2">Location</p>
                     <input className="mt-0.5 w-full p-2 border-2 rounded-lg border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-600 focus:border-transparent" onChange={changeHandler} value={profile.location} name="location" type="text" autoComplete="off" placeholder="Location"/>
 
-                    <p className="text-lg font-bold mt-2">Work Now</p>
+                    <p className="text-base sm:text-lg font-bold mt-2">Work Now</p>
                     <input className="mt-0.5 w-full p-2 border-2 rounded-lg border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-600 focus:border-transparent" onChange={changeHandler} value={profile.workNow} name="workNow" type="text" autoComplete="off" minLength="5" maxLength="14" placeholder="Company"/>
 
-                    <p className="text-lg font-bold mt-2">Job Status</p>
+                    <p className="text-base sm:text-lg font-bold mt-2">Job Status</p>
                     <input className="mt-0.5 w-full p-2 border-2 rounded-lg border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-600 focus:border-transparent" onChange={changeHandler} value={profile.jobStatus} name="jobStatus" type="text" autoComplete="off" placeholder="Job Status"/>
 
-                    <p className="text-lg font-bold mt-2">Summary</p>
+                    <p className="text-base sm:text-lg font-bold mt-2">Summary</p>
                     <textarea className="mt-0.5 w-full p-2 border-2 rounded-lg border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-600 focus:border-transparent" onChange={changeHandler} value={profile.summary} name="summary" type="text" autoComplete="off" placeholder="Job Status"/>
 
-                    <button className="font-bold mt-2.5 block px-3 py-2 bg-blue-500 rounded-lg text-white">Update profile</button>
+                    <button className="font-bold mt-2.5 block px-3 py-2 bg-blue-500 rounded-lg text-white hover:bg-blue-700">Update profile</button>
                 </form>
                 <form className="w-3/6" onSubmit={sumbitCv}>
-                    <p className="mt-2 text-lg font-bold">Select your CV</p>
+                    <p className="mt-2 text-base sm:text-lg font-bold">Select your CV</p>
                     <input className="mt-0.5 w-full p-2 border-2 rounded-lg border-gray-300" type="file" onChange={cvHandler}/>
-                    <button className="mt-2.5 mb-4 block px-3 py-2 text-white font-bold bg-blue-500 rounded-lg">Submit</button>
+                    <button className="mt-2.5 mb-4 block px-3 py-2 text-white font-bold bg-blue-500 rounded-lg hover:bg-blue-700">Submit</button>
                 </form>
             </div>
         </div>
