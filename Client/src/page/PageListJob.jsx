@@ -4,12 +4,12 @@ import axios from "axios";
 
 const PageListJob = () => {
   const [jobs, setJobs] = useState([]);
-  const [filter, setFilter] = useState('');
-  
+  const [filter, setFilter] = useState("");
+
   const token = localStorage.getItem("token");
   useEffect(() => {
     axios
-      .get("http://localhost:3001/vacancies", {
+      .get("https://serene-thicket-70310.herokuapp.com/vacancies", {
         headers: {
           token,
         },
@@ -18,15 +18,19 @@ const PageListJob = () => {
   }, []);
 
   useEffect(() => {
-    axios.get(`http://localhost:3001/vacancies?category=${filter}`, {
-      headers: {
-        token
-      }
-    })
-    .then(res => setJobs(res.data))
+    axios
+      .get(
+        `https://serene-thicket-70310.herokuapp.com/vacancies?category=${filter}`,
+        {
+          headers: {
+            token,
+          },
+        }
+      )
+      .then((res) => setJobs(res.data));
   }, [filter]);
 
-  console.log(jobs)
+  console.log(jobs);
 
   return (
     <div className="bg-gray-100">
@@ -41,10 +45,10 @@ const PageListJob = () => {
         />
       </form>
       <div className="flex flex-wrap w-full h-full justify-center gap-x-6 mt-10 overflow-y-scroll bg-gray-100 ">
-          {jobs.map((el, index) => (
-            // <p>{el.role}</p>
-            <CardList {...el} key={index} />
-          ))}
+        {jobs.map((el, index) => (
+          // <p>{el.role}</p>
+          <CardList {...el} key={index} />
+        ))}
       </div>
     </div>
   );

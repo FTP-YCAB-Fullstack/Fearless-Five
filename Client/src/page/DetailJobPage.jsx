@@ -22,7 +22,7 @@ const DetailJobPage = (props) => {
         emailHrd: data.hrdEmail,
       };
       const result = await axios.post(
-        "http://localhost:3001/applies",
+        "https://serene-thicket-70310.herokuapp.com/applies",
         forServer,
         {
           headers: {
@@ -42,7 +42,7 @@ const DetailJobPage = (props) => {
       status: "closed",
     };
     const upd = await axios.patch(
-      `http://localhost:3001/vacancies/${data._id}`,
+      `https://serene-thicket-70310.herokuapp.com/vacancies/${data._id}`,
       patch,
       {
         headers: {
@@ -55,11 +55,14 @@ const DetailJobPage = (props) => {
   useEffect(() => {
     const token = localStorage.getItem("token");
     axios
-      .get("http://localhost:3001/applies?id=" + state._id, {
-        headers: {
-          token,
-        },
-      })
+      .get(
+        "https://serene-thicket-70310.herokuapp.com/applies?id=" + state._id,
+        {
+          headers: {
+            token,
+          },
+        }
+      )
       .then((res) => setYourData(res.data.apply));
   }, []);
 
@@ -74,16 +77,21 @@ const DetailJobPage = (props) => {
     <div className="bg-gray-100">
       <div className=" flex px-16 pt-10 items-center mb-6 ">
         <div className="h-36 w-36 flex items-center justify-center mb-3">
-          <img className="w-24 h-24 sm:w-36 sm:h-36"
+          <img
+            className="w-24 h-24 sm:w-36 sm:h-36"
             src="https://firebasestorage.googleapis.com/v0/b/uploading-file-14552.appspot.com/o/building-icon-35643.png?alt=media&token=5cd9b5df-6477-472d-a97d-f6477af8d6a9"
             alt=""
           />
         </div>
         <div className="flex pl-8">
           <div className="pb-8 w-auto">
-            <p className="text-base sm:text-4xl font-bold">{data.companyName}</p>
+            <p className="text-base sm:text-4xl font-bold">
+              {data.companyName}
+            </p>
             <p className="text-base sm:text-lg">{data.role}</p>
-            <p className="text-base sm:text-lg">Rp. {data.rangeSalary.toLocaleString().replaceAll(",", ".")}</p>
+            <p className="text-base sm:text-lg">
+              Rp. {data.rangeSalary.toLocaleString().replaceAll(",", ".")}
+            </p>
             <p className="text-base sm:text-lg">{data.hrdEmail}</p>
           </div>
         </div>
@@ -93,84 +101,86 @@ const DetailJobPage = (props) => {
         <div className="border-b-4 border-gray-400 w-11/12 mb-8"></div>
       </div>
 
-      
-        <div className="px-10 sm:px-20">
-          <h2 className="text-xl font-bold">{data.status === "open" ? "OPEN" : "CLOSED"}</h2>
+      <div className="px-10 sm:px-20">
+        <h2 className="text-xl font-bold">
+          {data.status === "open" ? "OPEN" : "CLOSED"}
+        </h2>
 
-          <p className="mt-4 font-bold text-md">DESCRIPTION: <p className="font-normal">{data.job_description}</p></p>
+        <p className="mt-4 font-bold text-md">
+          DESCRIPTION: <p className="font-normal">{data.job_description}</p>
+        </p>
 
-          <div className="mt-4">
-            <h1 className="text-md font-bold">BENEFIT:</h1>
-            <div className="ml-7">
-              <ul>
-                {data.benefit.map((el) => (
-                  <li className="list-disc font-normal">{el}</li>
-                ))}
-              </ul>
-            </div>
+        <div className="mt-4">
+          <h1 className="text-md font-bold">BENEFIT:</h1>
+          <div className="ml-7">
+            <ul>
+              {data.benefit.map((el) => (
+                <li className="list-disc font-normal">{el}</li>
+              ))}
+            </ul>
           </div>
-          
-          <div className="mt-4">
-            <h1 className="text-md font-bold">REQUIREMENT:</h1>
-            <div className="ml-7">
-              <ul>
-                {data.requirements.map((el) => (
-                  <li className="list-disc font-normal">{el}</li>
-                ))}
-              </ul>
-            </div>
-          </div>
+        </div>
 
-          <div className="mt-4">
-            <h1 className="text-md font-bold">RESPONSIBILITY:</h1>
-            <div className="ml-7">
-              <ul>
-                {data.responsibility.map((el) => (
-                  <li className="list-disc font-normal">{el}</li>
-                ))}
-              </ul>
-            </div>
+        <div className="mt-4">
+          <h1 className="text-md font-bold">REQUIREMENT:</h1>
+          <div className="ml-7">
+            <ul>
+              {data.requirements.map((el) => (
+                <li className="list-disc font-normal">{el}</li>
+              ))}
+            </ul>
           </div>
-          
-          <div className="mt-4">
-            <h1 className="text-md font-bold">MANDATORY SKILLS:</h1>
-            <div className="ml-7">
-              <ul>
-                {data.mandatorySkills.map((el) => (
-                  <li className="list-disc font-normal">{el}</li>
-                ))}
-              </ul>
-            </div>
+        </div>
+
+        <div className="mt-4">
+          <h1 className="text-md font-bold">RESPONSIBILITY:</h1>
+          <div className="ml-7">
+            <ul>
+              {data.responsibility.map((el) => (
+                <li className="list-disc font-normal">{el}</li>
+              ))}
+            </ul>
           </div>
-          
-          <div className="mt-4">
-            <h1 className="text-md font-bold">GOOD TO HAVE SKILLS:</h1>
-            <div className="ml-7">
-              <ul>
-                {data.goodToHave.map((el) => (
-                  <li className="list-disc font-normal">{el}</li>
-                ))}
-              </ul>
-            </div>
+        </div>
+
+        <div className="mt-4">
+          <h1 className="text-md font-bold">MANDATORY SKILLS:</h1>
+          <div className="ml-7">
+            <ul>
+              {data.mandatorySkills.map((el) => (
+                <li className="list-disc font-normal">{el}</li>
+              ))}
+            </ul>
           </div>
-          {state.cv ? (
-            <button
-              disabled={state.role === "hrd" || canApply === false ? true : false}
-              className="bg-red-500 mb-20 rounded-lg p-2 font-bold text-white mt-4 hover:bg-red-700"
-              onClick={apply}
-            >
-              {state.role === "hrd" || canApply === false
-                ? "Cannot Apply"
-                : "Apply"}
-            </button>
-          ) : (
-            <p>You cannot apply before you upload your cv</p>
-          )}
-          {data.hrdEmail === state.email ? (
-            <button onClick={close}>Close Job</button>
-          ) : null}
+        </div>
+
+        <div className="mt-4">
+          <h1 className="text-md font-bold">GOOD TO HAVE SKILLS:</h1>
+          <div className="ml-7">
+            <ul>
+              {data.goodToHave.map((el) => (
+                <li className="list-disc font-normal">{el}</li>
+              ))}
+            </ul>
+          </div>
+        </div>
+        {state.cv ? (
+          <button
+            disabled={state.role === "hrd" || canApply === false ? true : false}
+            className="bg-red-500 mb-20 rounded-lg p-2 font-bold text-white mt-4 hover:bg-red-700"
+            onClick={apply}
+          >
+            {state.role === "hrd" || canApply === false
+              ? "Cannot Apply"
+              : "Apply"}
+          </button>
+        ) : (
+          <p>You cannot apply before you upload your cv</p>
+        )}
+        {data.hrdEmail === state.email ? (
+          <button onClick={close}>Close Job</button>
+        ) : null}
       </div>
-      
     </div>
   );
 };

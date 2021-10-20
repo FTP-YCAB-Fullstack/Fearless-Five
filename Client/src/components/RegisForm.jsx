@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 import swal from "sweetalert2";
 import { useDispatch } from "react-redux";
 import { useHistory } from "react-router-dom";
-import './../css/style.css'
+import "./../css/style.css";
 
 const Regis = () => {
   const history = useHistory();
@@ -17,7 +17,7 @@ const Regis = () => {
   const postRegis = async (data) => {
     try {
       let response = await axios.post(
-        "http://localhost:3001/users/register",
+        "https://serene-thicket-70310.herokuapp.com/users/register",
         data
       );
       response = response;
@@ -26,17 +26,23 @@ const Regis = () => {
         title: "Sign Up Success!",
         text: "Your account is successfully registered",
       });
-      let login = await axios.post("http://localhost:3001/users/login", {
-        email,
-        password,
-      });
+      let login = await axios.post(
+        "https://serene-thicket-70310.herokuapp.com/users/login",
+        {
+          email,
+          password,
+        }
+      );
       login = login.data.token;
       localStorage.setItem("token", login);
-      let profile = await axios.get("http://localhost:3001/users", {
-        headers: {
-          token: login,
-        },
-      });
+      let profile = await axios.get(
+        "https://serene-thicket-70310.herokuapp.com/users",
+        {
+          headers: {
+            token: login,
+          },
+        }
+      );
       profile = profile.data;
       dispatch({ type: "ADD_LOGIN", payload: profile });
       history.push("/profile", { state: "eo" });
@@ -69,10 +75,14 @@ const Regis = () => {
     <div className="h-full pt-10 w-screen flex justify-center items-center">
       <div className=" card sm:bg-gray-50 h-auto py-3 pl-2 sm:filter sm:drop-shadow-lg">
         <div>
-          <span className="text-4xl flex justify-center h-20 font-bold">Remotely</span>
+          <span className="text-4xl flex justify-center h-20 font-bold">
+            Remotely
+          </span>
         </div>
         <div>
-          <h1 className="pl-10 sm:pl-12 lg:pl-52 text-lg font-bold h-20">Register</h1>
+          <h1 className="pl-10 sm:pl-12 lg:pl-52 text-lg font-bold h-20">
+            Register
+          </h1>
         </div>
         <div className="flex flex-col items-center">
           <form
@@ -128,7 +138,7 @@ const Regis = () => {
             </div>
             <div className="flex justify-center">
               <button className="bg-blue-500 text-white h-10 rounded-md w-32 focus:outline-none ">
-              Create account
+                Create account
               </button>
             </div>
             <div>

@@ -4,8 +4,7 @@ import { Link } from "react-router-dom";
 import Swal from "sweetalert2";
 import { useDispatch } from "react-redux";
 import { useHistory } from "react-router-dom";
-import './../css/style.css'
-
+import "./../css/style.css";
 
 const Login = () => {
   const history = useHistory();
@@ -16,17 +15,20 @@ const Login = () => {
   const postLogin = async (data) => {
     try {
       let response = await axios.post(
-        "http://localhost:3001/users/login",
+        "https://serene-thicket-70310.herokuapp.com/users/login",
         data
       );
       response = response.data;
       localStorage.setItem("token", response.token);
       const token = localStorage.getItem("token");
-      let userProfile = await axios.get("http://localhost:3001/users", {
-        headers: {
-          token,
-        },
-      });
+      let userProfile = await axios.get(
+        "https://serene-thicket-70310.herokuapp.com/users",
+        {
+          headers: {
+            token,
+          },
+        }
+      );
       userProfile = userProfile.data;
       dispatch({ type: "ADD_LOGIN", payload: userProfile });
       history.push("/profile", { test: "eo" });
@@ -55,10 +57,14 @@ const Login = () => {
     <div className=" h-full pt-10 w-screen flex justify-center items-center">
       <div className="card sm:bg-gray-50 h-auto py-3 pl-2 sm:filter sm:drop-shadow-lg">
         <div>
-          <span className="text-4xl flex justify-center h-20 font-bold">Remotely</span>
+          <span className="text-4xl flex justify-center h-20 font-bold">
+            Remotely
+          </span>
         </div>
         <div>
-          <h1 className=" pl-10 sm:12 lg:pl-52 text-lg font-bold h-20">Login</h1>
+          <h1 className=" pl-10 sm:12 lg:pl-52 text-lg font-bold h-20">
+            Login
+          </h1>
         </div>
         <div className="flex flex-col items-center">
           <form
