@@ -126,7 +126,7 @@ const PostForm = () => {
               />
               <br className="pt-2" />
               <div className="flex justify-center">
-              <button className="Button bg-blue-500 text-white h-10 rounded-md utline-none w-96">
+              <button className="Button focus:outline-none  bg-blue-500 text-white h-10 rounded-md utline-none w-96">
                 Create 
               </button>
               </div>

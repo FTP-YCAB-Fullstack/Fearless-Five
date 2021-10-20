@@ -8,22 +8,16 @@ const About = () => {
       </div>
       <div className="flex justify-around px-6 items-center h-72 flex-wrap">
         <div className="flex flex-col items-center pb-10 sm:pb-0">
-          <div className="h-48 w-48 border-2 border-black rounded-full flex justify-center ">
-            <span>profil</span>
-          </div>
-          <span className="text-center">name</span>
+          <img className=" rounded-full flex justify-center" src="https://images5.alphacoders.com/118/thumbbig-1182576.webp" width="200" alt="noProfile"/>
+          <span className="text-center font-bold">Dedy Yoga</span>
         </div>
         <div className="flex flex-col items-center pb-10 sm:pb-0">
-          <div className="h-48 w-48 border-2 border-black rounded-full flex justify-center ">
-            <span>profil</span>
-          </div>
-          <span className="text-center">name</span>
+        <img className=" rounded-full flex justify-center" src="https://images5.alphacoders.com/118/thumbbig-1182576.webp" width="200" alt="noProfile"/>
+          <span className="text-center font-bold">Ihsan</span>
         </div>
         <div className="flex flex-col items-center pb-10 sm:pb-0">
-          <div className="h-48 w-48 border-2 border-black rounded-full flex justify-center ">
-            <span>profil</span>
-          </div>
-          <span className="text-center">name</span>
+        <img className=" rounded-full flex justify-center" src="https://images5.alphacoders.com/118/thumbbig-1182576.webp" width="200" alt="noProfile"/>
+          <span className="text-center font-bold">Gilang</span>
         </div>
       </div>
       <footer className="mt-40 sm:mt-20 invisible sm:visible">

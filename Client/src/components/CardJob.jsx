@@ -87,22 +87,22 @@ const CardJob = (props) => {
 
   return (
     <div className="flex justify-center h-auto pb-6">
-      <Body className="bg-gray-100 py-3 flex justify-between filter drop-shadow-lg pl-5 pr-5 bg-red-200 w-10 sm:w-full">
+      <Body className="bg-gray-100 py-3 flex justify-between sm:filter sm:drop-shadow-lg pl-5 pr-5 flex-wrap w-10 sm:w-full">
         <div>
           <span className="font-bold">{props.companyName}</span>
         </div>
         {/* <div>
             <button onClick={() => setList(true)} className="bg-blue-500 text-white rounded-md w-32 ">klik more info</button>
         </div> */}
-        <div className="flex w-96 justify-around ">
-          <div className="flex flex-col">
+        <div className="flex w-96 sm:justify-around flex-col sm:flex-row flex-wrap ">
+          <div className="flex flex-col pb-1">
             {props.userRole === "hrd" ? (
               <a href={props.idPelamar.cv} className="font-bold">{props.idPelamar.name}</a>
             ) : null}
             <span className="font-bold">{props.vacancyId.role}</span>
             <h1 className="bg-yellow-500 w-max px-2 py-1 font-semibold text-white text-center rounded-lg">{props.status}</h1>
           </div>
-          <div className=" flex flex-col h-20 items-center gap-2 ">
+          <div className=" flex flex-col h-20 sm:items-center items-start gap-2 sm:gap-2 ">
             {props.userRole === "hrd" && props.status === "Pending" ? (
               <button
                 onClick={() => buttonHandler("accept")}
@@ -114,7 +114,7 @@ const CardJob = (props) => {
             {props.userRole === "hrd" && props.status === "Pending" ? (
               <button
                 onClick={() => buttonHandler("reject")}
-                className="bg-blue-500 text-white h-8 px-6 rounded-sm"
+                className="bg-blue-500 text-white h-8 px-6 pb-2 rounded-sm"
               >
                 Reject
               </button>

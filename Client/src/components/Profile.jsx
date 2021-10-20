@@ -79,7 +79,7 @@ const Profile = (props) => {
                     </div>
 
                     <div className="ml-3 sm:ml-6 md:ml-6 2xl:ml-6">
-                      <button className="font-light text-blue-500 text-base md:text-xl sm:text-lg hover:text-blue-700" onClick={() => setModalIsOpen(true)}>Edit profile</button>
+                      <button className="font-light text-blue-500 text-base md:text-xl sm:text-lg hover:text-blue-700 focus:outline-none " onClick={() => setModalIsOpen(true)}>Edit profile</button>
                     </div>
                   </div>
                   
