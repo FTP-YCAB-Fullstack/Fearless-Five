@@ -71,6 +71,8 @@ const Profile = (props) => {
     }
   }, [user]);
 
+  console.log(job)
+
   return (
     <div>
       {!user.name ? null : (

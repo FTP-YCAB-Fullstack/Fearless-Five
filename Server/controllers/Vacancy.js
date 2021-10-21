@@ -37,6 +37,7 @@ class VacancyController {
             
             // res.status(200).json(data)
         } catch(err) {
+            console.log(err)
             next({code: 500, message: err.message})
         }
     }
