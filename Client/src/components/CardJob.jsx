@@ -8,7 +8,7 @@ const CardJob = (props) => {
   const token = localStorage.getItem("token");
   const history = useHistory();
 
-  const buttonHandler = (action) => {
+  const buttonHandler = async (action) => {
     Swal.fire({
       title: "Are you sure?",
       text: "You won't be able to revert this!",
@@ -17,7 +17,7 @@ const CardJob = (props) => {
       confirmButtonColor: "#3085d6",
       cancelButtonColor: "#d33",
       confirmButtonText: "Yes",
-    }).then((result) => {
+    }).then(async (result) => {
       if (result.isConfirmed) {
         if (action === "reject") {
           axios.patch(
@@ -41,8 +41,8 @@ const CardJob = (props) => {
           );
         }
       }
+      await props.getLamaran("email", props.email);
       Swal.fire("Action Success", "", "success");
-      props.getLamaran("email", props.email);
     });
   };
 
@@ -84,13 +84,13 @@ const CardJob = (props) => {
   return (
     <div className="flex sm:justify-center justify-start h-auto pb-6">
       <div className="card2 bg-gray-100 py-3 flex justify-between sm:filter sm:drop-shadow-lg sm:pl-5 pl-3 flex-wrap">
-        <div>
-          <span className="font-bold">{props.companyName}</span>
-        </div>
         <div className="flex w-96 sm:justify-around flex-col sm:flex-row flex-wrap ">
+          <div>
+            <span className="font-bold">{props.companyName}</span>
+          </div>
           <div className="flex flex-col pb-3">
             {props.userRole === "hrd" ? (
-              <a href={props.idPelamar.cv} className="font-bold">
+              <a href={props.idPelamar.cv} className="font-bold" target="_blank">
                 {props.idPelamar.name}
               </a>
             ) : null}

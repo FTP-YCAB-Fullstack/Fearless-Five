@@ -30,7 +30,6 @@ const PageListJob = () => {
       .then((res) => setJobs(res.data));
   }, [filter]);
 
-  console.log(jobs);
 
   return (
     <div className="bg-gray-100">
