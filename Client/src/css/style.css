@@ -43,13 +43,29 @@ body {
 .list {
   padding: 0;
 }
-.Button{
+.Button {
   outline: white;
-  border-color:none;
+  border-color: none;
 }
 
-.card2{
-  width: 20rem;
+.card2 {
+  width: 30rem;
+}
+
+.img{
+  height: 160px;
+  width: 100%;
+  object-fit: cover;
+}
+.img1{
+  width: 170px;
+  height: 160px;
+  object-fit: cover;
+}
+.img2{
+  width: 170px;
+  height: 160px;
+  object-fit: cover;
 }
 
 @media (max-width: 1024px) {
@@ -66,10 +82,10 @@ body {
     width: 20rem;
     --tw-bg-opacity: 1;
     background-color: rgba(243, 244, 246, var(--tw-bg-opacity));
-    border-color:rgba(243, 244, 246, var(--tw-bg-opacity));
-    outline:none;
+    border-color: rgba(243, 244, 246, var(--tw-bg-opacity));
+    outline: none;
   }
-  .card2{
+  .card2 {
     width: 15rem;
   }
 }
