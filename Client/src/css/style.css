@@ -52,6 +52,22 @@ body {
   width: 30rem;
 }
 
+.img{
+  height: 160px;
+  width: 100%;
+  object-fit: cover;
+}
+.img1{
+  width: 170px;
+  height: 160px;
+  object-fit: cover;
+}
+.img2{
+  width: 170px;
+  height: 160px;
+  object-fit: cover;
+}
+
 @media (max-width: 1024px) {
   .card {
     width: 30rem;
