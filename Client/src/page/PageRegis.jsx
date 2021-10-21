@@ -1,13 +1,12 @@
-import React from "react"
-import RegisForm from "../components/RegisForm"
+import React from "react";
+import RegisForm from "../components/RegisForm";
 
+const PageRegis = () => {
+  return (
+    <div className="bg-gray-100 h-screen">
+      <RegisForm />
+    </div>
+  );
+};
 
-const PageRegis = () =>{
-    return(
-        <div>
-            <RegisForm/>
-        </div>
-    )
-}
-
-export default PageRegis
+export default PageRegis;

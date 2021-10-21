@@ -18,7 +18,7 @@ class Users {
                         message: 'Error! Either email or Password Wrong'
                     })  
                 } else {
-                    const token = jwt.sign({name:exist.name, email: exist.email, role: exist.role, id: exist._id}, 'secret-key');
+                    const token = jwt.sign({name:exist.name, email: exist.email, role: exist.role, id: exist._id}, process.env.JWT_KEY);
                     res.status(200).json({
                         token
                     })
@@ -36,6 +36,14 @@ class Users {
        } catch(err) {
             next({code: 500, message: err.message})
        }
+    }
+    static patch = async (req, res, next) => {
+        try {
+            const updated = await User.findByIdAndUpdate(req.user.id, {...req.body}, {runValidators: true, new: true});
+            res.status(200).json(updated)
+        } catch(err) {
+            next({code: 500, message: err.message})
+        }
     }
     static Register = async (req, res, next) => {
         try {

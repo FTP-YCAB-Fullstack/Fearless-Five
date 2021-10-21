@@ -3,8 +3,10 @@ import Login from "../components/Login";
 
 const PageLogin = () => {
   return (
-    <Login />
+    <div className="bg-gray-100 h-screen">
+      <Login />
+    </div>
   );
 };
 
-export default PageLogin
+export default PageLogin;

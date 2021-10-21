@@ -34,14 +34,6 @@ const userSchema = new mongoose.Schema({
       type: String,
       default: "No Job Status"
   },
-  citizen: {
-      type: String,
-      default: "No Citizen"
-  },
-  nationality: {
-      type: String,
-      default: "No Nationality"
-  },
   summary: {
       type: String,
       default: "No Summary"
@@ -50,37 +42,14 @@ const userSchema = new mongoose.Schema({
       type: String,
       default: ""
   },
-  skills: {
-      type: [String],
-      default: []
-  },
-  experience: {
-      type: [
-          {
-              workPlace: {
-                  type: String,
-                  required: true
-              },
-              division: {
-                  type: String,
-                  required: true
-              },
-              startYear: {
-                  type: Number,
-                  required: true
-              },
-              endYear: {
-                  type: Number,
-                  required: true
-              },
-          }
-      ],
-      default: []
-  },
   role: {
       type: String,
       required: true,
       default: 'user'
+  },
+  workNow: {
+    type: String,
+    default: ""
   }
 })
 

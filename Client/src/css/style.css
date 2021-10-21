@@ -1,0 +1,91 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+body {
+  --tw-bg-opacity: 1;
+  background-color: rgba(243, 244, 246, var(--tw-bg-opacity));
+}
+
+.chat_s {
+  width: 20rem;
+}
+
+@media (max-width: 430px) {
+  .xzx {
+    text-align: center;
+  }
+  .chat_s {
+    width: 100%;
+  }
+
+  .header_ {
+    font-size: 1rem;
+  }
+
+  .headerx_ {
+    font-size: 1.5rem;
+  }
+
+  .header_zx {
+    font: 2rem;
+  }
+}
+
+.card {
+  width: 50rem;
+}
+
+.form {
+  width: 34rem;
+}
+
+.list {
+  padding: 0;
+}
+.Button {
+  outline: white;
+  border-color: none;
+}
+
+.card2 {
+  width: 30rem;
+}
+
+.img{
+  height: 160px;
+  width: 100%;
+  object-fit: cover;
+}
+.img1{
+  width: 170px;
+  height: 160px;
+  object-fit: cover;
+}
+.img2{
+  width: 170px;
+  height: 160px;
+  object-fit: cover;
+}
+
+@media (max-width: 1024px) {
+  .card {
+    width: 30rem;
+  }
+  .form {
+    width: 20rem;
+  }
+}
+
+@media (max-width: 640px) {
+  .card {
+    width: 20rem;
+    --tw-bg-opacity: 1;
+    background-color: rgba(243, 244, 246, var(--tw-bg-opacity));
+    border-color: rgba(243, 244, 246, var(--tw-bg-opacity));
+    outline: none;
+  }
+  .card2 {
+    width: 15rem;
+  }
+}
