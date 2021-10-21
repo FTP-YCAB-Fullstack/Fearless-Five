@@ -40,7 +40,7 @@ const Profile = (props) => {
         },
       }
     );
-    setLamaran(data.data.apply);
+    await setLamaran(data.data.apply);
   };
 
   const getJob = async (email) => {
@@ -71,7 +71,6 @@ const Profile = (props) => {
     }
   }, [user]);
 
-  console.log(job)
 
   return (
     <div>
